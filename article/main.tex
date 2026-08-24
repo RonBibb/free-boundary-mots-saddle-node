@@ -14,7 +14,7 @@
   linkcolor=blue!55!black,
   citecolor=blue!55!black,
   urlcolor=blue!55!black,
-  pdftitle={A Numerically Resolved Free-Boundary MOTS Saddle-Node in Dynamical Braneworld Collapse},
+  pdftitle={Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node in Dynamical Five-Dimensional Gravity},
   pdfauthor={Ronald Bibb},
   pdfsubject={Critical structure of a free-boundary marginally outer trapped surface bifurcation},
   pdfkeywords={braneworld; marginally outer trapped surface; free boundary; saddle-node bifurcation; numerical relativity; Goldberger-Wise stabilization}
@@ -25,8 +25,8 @@
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\II}{\mathrm{II}}
 
-\title{A Numerically Resolved Free-Boundary MOTS Saddle-Node\\
-in Dynamical Braneworld Collapse}
+\title{Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node\\
+in Dynamical Five-Dimensional Gravity}
 \author{Ronald Bibb\\
 \small Independent Researcher, Lilburn, Georgia, USA\\
 \small Correspondence: \texttt{ronbibb@gmail.com}}
@@ -36,10 +36,13 @@ in Dynamical Braneworld Collapse}
 \maketitle
 
 \begin{abstract}
-We numerically resolve the critical structure of a brane-terminating marginally outer
-trapped-surface (MOTS) pair in the $SO(3)$-symmetric sector of five-dimensional
-Einstein--anti-de Sitter gravity on a Goldberger--Wise-stabilized compact
-interval.  An independently constructed parent sequence contains no accepted upper-brane-capped MOTS at
+The boundary of a marginally outer trapped surface (MOTS) changes the domain
+and adjoint of its stability problem, so closed-surface bifurcation examples do
+not by themselves establish that the usual pair-creation normal form survives.
+We resolve that normal form for a brane-terminating MOTS pair in the
+$SO(3)$-symmetric sector of five-dimensional Einstein--anti-de Sitter gravity
+on a Goldberger--Wise-stabilized compact interval.  An independently
+constructed parent sequence contains no accepted upper-brane-capped MOTS at
 $t/\ell=0.001$ and exactly two at $t/\ell=0.0015$ on three successive
 spacetime grids.  Pseudo-arclength continuation of the coupled surface--time
 problem locates a common critical time
@@ -50,9 +53,10 @@ coefficients under a fully specified discrete normalization.  The invariant
 one-sided proper-area separation follows the expected square-root law.  An
 independent G10 half-timestep evolution repeats the parent and continuation,
 yields an overlapping critical-time bracket, and gives a free exponent
-$p\simeq0.498$.  These results
-numerically resolve the established saddle-node mechanism in a dynamical
-free-boundary MOTS problem rather than inferring it only from pair anatomy.
+$p\simeq0.498$.  Together these tests resolve the local saddle-node reduction
+for a dynamically generated free-boundary MOTS problem rather than inferring
+it only from pair anatomy.  The new result is the boundary-sensitive numerical
+realization, not the saddle-node mechanism itself.
 The claim is finite-resolution and quasi-local: it is not a continuum theorem,
 event-horizon reconstruction, or phase diagram.
 \end{abstract}
@@ -92,9 +96,13 @@ Recent bifurcation analysis identifies generic pair creation as a saddle-node
 mechanism and distinguishes it from symmetry-supported pitchfork or
 transcritical cases \cite{BoothCoxOkpala2026,BoothCoxMargalefBentabol2024}.
 Accordingly, this paper does not claim the fold mechanism as new.  Its question
-is whether the mechanism can be resolved---rather than recognized only from
-its aftermath---for brane-terminating free-boundary MOTSs in a compact,
-explicitly stabilized braneworld.
+is more general than whether two surfaces appear in one braneworld evolution:
+does the local saddle-node reduction persist when the marginal surface has a
+physical boundary, the boundary condition enters the operator domain, and the
+ambient geometry is supplied by a nonlinear evolution rather than a prescribed
+metric family?  We answer this question in the concrete and demanding case of
+brane-terminating free-boundary MOTSs in a compact, explicitly stabilized
+braneworld.
 
 The new result is a normal-form structure reproduced across three spatial
 grids and in an independent half-timestep evolution in a substantially
@@ -309,6 +317,73 @@ of the endpoint Robin conditions.  The boundary treatment is checked by the
 manufactured Robin spectrum, endpoint defects below $10^{-10}$, and 49/65/81
 angular-node sequences; no alternative stencil-width study is claimed.
 
+\subsection{Boundary-value map and local normal form}
+
+The nonlinear problem is not merely the scalar equation $\theta_+=0$ on an
+unrestricted profile space.  Before endpoint elimination it is the
+boundary-value map
+\begin{equation}
+\widehat{\mathcal F}(\rho,t)
+=\left(\theta_+[\rho;t],\,
+\mathcal R_0[\rho;t],\,\mathcal C_B[\rho;t]\right)=0,
+\qquad
+\mathcal R_0=\rho'(0),\quad
+\mathcal C_B=g(N,\varrho)\big|_{\vartheta=\pi/2},
+\label{eq:free-boundary-map}
+\end{equation}
+where $\mathcal R_0=0$ enforces smooth-axis regularity and
+$\mathcal C_B=0$ enforces orthogonal brane contact.  Linearization at a
+solution gives the interior stability operator $L$, the axis regularity row,
+and the physical Robin row $B$ in Eq.~\eqref{eq:physical-robin}.  Thus the
+brane geometry enters both the kernel and the adjoint problem; it is not an
+external endpoint check applied after the stability calculation.
+
+Near a critical solution $(\rho_*,t_*)$, the coordinate reduction above
+supplies a local chart of admissible surfaces, and the discretization
+eliminates the endpoint rows.  We use the physical normal amplitude $f$ in
+that chart and write the reduced interior residual as
+$\mathcal F(f,t)$, with $\mathcal F(0,t_*)=0$.  Its derivative with respect to
+$f$ is the stability operator $L$ on the Robin domain $Bf=0$.  This is also
+what the numerical endpoint elimination produces.  For this finite-dimensional
+reduced map, let $f_R$ span a simple kernel of $D_f\mathcal F$ and let $f_L$
+span the one-dimensional adjoint kernel.  With
+$\langle f_L,f_R\rangle=1$, write
+\begin{equation}
+f=s f_R+\eta(s,\tau),
+\qquad \tau=t-t_*,
+\qquad \langle f_L,\eta\rangle=0.
+\end{equation}
+Solving the range equation for $\eta$ and projecting the remaining equation onto
+$f_L$ gives the local scalar reduction
+\begin{equation}
+0=a\tau+b s^2
++O\!\left(\tau^2+|\tau s|+|s|^3\right),
+\quad
+a=\left\langle f_L,\partial_t\mathcal F\right\rangle,
+\quad
+b=\frac12\left\langle f_L,
+D_f^2\mathcal F[f_R,f_R]\right\rangle.
+\label{eq:free-boundary-normal-form}
+\end{equation}
+For $a\neq0$ and $b\neq0$, on the side where $-a\tau/b>0$, the two branches satisfy
+\begin{equation}
+s_\pm=\pm\sqrt{-\frac{a}{b}\tau}+O(\tau).
+\label{eq:fold-branches}
+\end{equation}
+Consequently, any smooth invariant $Q$ with
+$D Q[f_R]\neq0$ separates as
+\begin{equation}
+Q_+-Q_-
+=2D Q[f_R]\sqrt{-\frac{a}{b}\tau}+O(\tau).
+\label{eq:invariant-fold-scaling}
+\end{equation}
+The calculation below tests these logically distinct ingredients with the
+principal zero mode, the adjoint coefficients $a$ and $b$, and the one-sided
+proper area $Q=\mathcal A$.  Equations~\eqref{eq:free-boundary-normal-form}--
+\eqref{eq:invariant-fold-scaling} state the local numerical hypothesis being
+tested; they are not asserted here as a new continuum theorem
+\cite{Kuznetsov2004,BoothCoxOkpala2026}.
+
 \section{Numerical strategy}
 
 The coupled Einstein--scalar equations are evolved in a regular
@@ -362,7 +437,8 @@ nonvanishing, rather than invariance under rescaling, is the normal-form test.
 Any admissible change of eigenvector normalization rescales $a$ and $b$ by
 finite nonzero factors and therefore cannot change whether either coefficient
 vanishes.
-The two local coefficients are evaluated as
+After endpoint elimination, the two coefficients in
+Eq.~\eqref{eq:free-boundary-normal-form} are evaluated as
 \begin{equation}
 a=\left\langle f_L,\partial_t\theta_+\right\rangle,
 \qquad
@@ -571,8 +647,12 @@ through mutually distinct observables.
 
 \section{Interpretation}
 
-The calculation resolves the local data that distinguish a generic
-saddle-node from a merely suggestive zero-to-two history.  The branches are
+The result is a boundary-sensitive test of the local MOTS bifurcation
+framework, not simply another observation of pair formation.  The physical
+contact condition is part of the nonlinear map in
+Eq.~\eqref{eq:free-boundary-map}; its linearization fixes the Robin domain,
+the critical kernel, and the adjoint used in the normal-form projection.  The
+branches are
 connected by pseudo-arclength continuation; an isolated near-critical
 principal mode accompanies the bracketed zero crossing; both
 the adjoint temporal transversality and quadratic coefficient are nonzero;
@@ -582,7 +662,15 @@ agreement across three spacetime grids and the independent half-timestep G10
 comparison support a numerical free-boundary MOTS saddle-node at finite
 resolution in the imposed $SO(3)$-symmetric problem.
 
-The physical significance of the result lies in the surface class and arena.
+This chain also supplies a portable diagnostic for other physical-boundary
+MOTS problems: formulate the contact condition as part of the boundary-value
+map, continue through the singular point, resolve the left and right critical
+modes, test the two nondegeneracy projections, and confirm the predicted law
+with an invariant geometric observable.  The present calculation establishes
+that chain only for the stated discretized evolution; it does not prove that
+every free-boundary MOTS problem has the same unfolding.
+
+The concrete physical significance lies in the surface class and arena.
 The MOTSs terminate orthogonally on a brane inside an explicitly stabilized
 compact interval.  They are not imposed as static horizons and are not
 continued from a pre-existing connected black string.  Their appearance is
@@ -613,8 +701,11 @@ a different observable or a different global construction.
 
 \section{Conclusion}
 
-Localized collapse in a Goldberger--Wise-stabilized compact braneworld
-produces a brane-terminating free-boundary MOTS saddle-node.  An independently
+We have numerically resolved the local normal form of a dynamical
+free-boundary MOTS saddle-node.  The physical contact condition enters the
+boundary-value map and its adjoint problem, while the ambient geometry is
+generated by a nonlinear five-dimensional evolution.  In the concrete
+Goldberger--Wise-stabilized braneworld realization, an independently
 constructed parent sequence evolves from no accepted capped surface to two
 opposite-stability branches on G9, G10, and G11.  Pseudo-arclength continuation
 connects them through a grid-consistent critical surface.  The isolated
@@ -627,7 +718,8 @@ constrains the shared temporal-discretization concern.  The repaired-line residu
 operator-resolution, physical-boundary, and deterministic-replay controls
 support the formation and critical-structure result.  The calculation therefore advances from
 observing post-formation branch anatomy to numerically resolving the local
-critical structure of a dynamical free-boundary MOTS problem.  A separate
+critical structure of a dynamical free-boundary MOTS problem and provides a
+reusable numerical test of the boundary-sensitive normal form.  A separate
 future study may use these leaves to investigate a marginal tube or other
 global horizon observables; none is claimed here.
 
