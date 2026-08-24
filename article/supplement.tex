@@ -14,7 +14,7 @@
   linkcolor=blue!55!black,
   citecolor=blue!55!black,
   urlcolor=blue!55!black,
-  pdftitle={Supplemental Material: A Numerically Resolved Free-Boundary MOTS Saddle-Node in Dynamical Braneworld Collapse},
+  pdftitle={Supplemental Material: Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node in Dynamical Five-Dimensional Gravity},
   pdfauthor={Ronald Bibb},
   pdfsubject={Validation and reproducibility record for a free-boundary MOTS saddle-node},
   pdfkeywords={braneworld; marginally outer trapped surface; free boundary; saddle-node bifurcation; numerical relativity; supplemental material}
@@ -28,8 +28,8 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \title{Supplemental Material for\\
-``A Numerically Resolved Free-Boundary MOTS Saddle-Node\\
-in Dynamical Braneworld Collapse''}
+``Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node\\
+in Dynamical Five-Dimensional Gravity''}
 \author{Ronald Bibb\\
 \small Independent Researcher, Lilburn, Georgia, USA\\
 \small Correspondence: \texttt{ronbibb@gmail.com}}
@@ -47,7 +47,8 @@ constructed G9/G10/G11 parent sequence evolves from no accepted upper-brane-capp
 marginally outer trapped surface (MOTS) to two opposite-stability branches,
 and pseudo-arclength continuation resolves their common critical surface.
 An isolated near-critical principal mode accompanies the bracketed zero
-crossing, the adjoint transversality and quadratic coefficients are nonzero,
+crossing, the endpoint-eliminated discrete adjoint transversality and
+quadratic coefficients are nonzero,
 and the invariant area separation follows a one-half power.  This establishes
 a finite-resolution numerical
 free-boundary MOTS saddle-node in the $SO(3)$-symmetric sector of the
@@ -74,21 +75,26 @@ than to the scientific argument.
 
 The novelty claim is correspondingly narrow.  Cigar-shaped apparent horizons
 in braneworld initial data and dynamically formed brane-intersecting horizons
-in RSII precede this work \cite{ShiromizuShibata2000,WangChoptuik2016}, while
+in RSII precede this work \cite{ShiromizuShibata2000,WangChoptuik2016}, and
 MOTS pair creation is already classified as a saddle-node bifurcation
-\cite{BoothCoxOkpala2026}.  The present result adds a resolved critical
-free-boundary structure---not only pair formation---in compact two-brane
-geometry with explicit Goldberger--Wise stabilization.  No universal or new
-mechanism is claimed.
+\cite{BoothCoxOkpala2026}.  Free-boundary MOTS stability, rigidity, and
+higher-dimensional structure likewise have an established mathematical
+literature
+\cite{AlaeeLesourdYau2020,Chai2024,Mendes2021,Lee2025,deAlmeidaMendes2026}.
+The unresolved issue addressed here is whether the complete local fold
+hypotheses are realized when a physical contact condition enters the MOTS
+boundary-value map and the ambient geometry is supplied by a nonlinear
+evolution.
 
-More specifically, the novelty is not pair creation, the fold classification,
-the one-half exponent, pseudo-arclength continuation, free-boundary stability
-theory, or dynamical braneworld collapse separately.  It is their
-load-bearing conjunction: a nonlinear five-dimensional evolved geometry, a
-brane-terminating MOTS domain with an induced Robin condition, a
-non-self-adjoint stability operator, and normal-form data reproduced across
-three spatial grids and an independent half-timestep evolution.  This is a new numerical realization of the general MOTS
-bifurcation framework, not a proposed new bifurcation mechanism.
+The contribution is therefore the closed numerical chain: the physical Robin
+domain, branch connection, simple principal zero mode, nonzero
+endpoint-eliminated discrete adjoint projections, invariant square-root
+separation, three-grid spatial closure, and an independent half-timestep
+comparison.  The stabilized compact braneworld supplies the concrete
+five-dimensional realization.  One such realization establishes that the
+physical boundary does not obstruct the local fold structure in this problem;
+it does not establish genericity, a universal theorem, or a new bifurcation
+mechanism.
 
 \section{Model, fields, and conventions}
 
@@ -186,7 +192,7 @@ support hypersurface is the free-boundary condition used in the cited
 literature, and it is precisely the brane endpoint condition imposed here.
 The cap is therefore a brane-terminating free-boundary surface; free-boundary and
 capillary MOTS stability have an independent mathematical literature
-\cite{AlaeeLesourdYau2020,Chai2024,Mendes2021,Lee2025}, while higher-dimensional MOTSs
+\cite{AlaeeLesourdYau2020,Chai2024,Mendes2021,Lee2025,deAlmeidaMendes2026}, while higher-dimensional MOTSs
 have also been treated directly \cite{PaetzSimon2013}.  Linear stability is defined by
 \begin{equation}
 L f=\delta_{f s}\theta_+.
@@ -195,12 +201,13 @@ In the convention used here, a nonnegative principal eigenvalue is
 outward-stable.  The evolved-slice operator is treated as non-self-adjoint.
 The interpretation follows the local MOTS-stability framework of
 Refs.~\cite{AnderssonMarsSimon2005,AnderssonMarsSimon2008,AnderssonMarsMetzgerSimon2009,PookKolbEtAl2019}.
-The operator and Robin domain commute with $SO(3)$.  Positivity and uniqueness
-of the elliptic principal eigenfunction up to scale then force that mode to be
-$SO(3)$-invariant: a group transform is another normalized positive principal
-eigenfunction and hence the same one.  The symmetric computation therefore
-captures the full principal eigenvalue and simple principal kernel, although
-it does not determine the nonsymmetric nonprincipal spectrum.
+For the connected cap, the scalar stability operator is strongly elliptic,
+and its Robin domain commutes with $SO(3)$.  Free-boundary
+principal-eigenvalue theory supplies a positive eigenfunction that is unique
+up to scale \cite{AlaeeLesourdYau2020,deAlmeidaMendes2026}.  A group transform
+is therefore the same normalized principal eigenfunction.  The symmetric
+computation captures the full principal eigenvalue and its simple kernel,
+although it does not determine the nonsymmetric nonprincipal spectrum.
 
 The perturbation class is not left implicit.  Writing a nearby cap as
 $\rho(\vartheta)+\delta\rho(\vartheta)$, smooth-axis closure and preservation
@@ -658,7 +665,7 @@ Unverified direct G11 MOTS observables & Exactly two branches and 1\% adjacent-g
 Spectral condition gate censors the fold & Keep the historical spectral detector distinct from the repaired BVP and augmented corrector & The $10^5$ gate is never applied to the repaired search or continuation; acceptance instead uses BVP residual, endpoint, domain, and cross-evaluator gates & Removes the proposed censoring mechanism; no condition-number trend is claimed because none was archived \\
 Boundary discretization changes the critical mode & Repeat angular resolution, Fr\'echet step, and the physical Robin reduction & The principal sign is stable over 49/65/81 nodes and step doubling; the manufactured free-boundary control passes & Supports the principal mode under the implemented seven-point boundary treatment; no alternative stencil width is claimed \\
 Pair anatomy does not identify a fold & Continue both branches through a principal zero and isolate the near-critical mode & The continuation encloses the zero on all grids; the near-critical mode is sign-definite and the next reduced-sector eigenvalue remains near $5.566$ & Supports a simple critical kernel rather than only a zero-to-two history \\
-Degenerate or tangential critical point & Nonzero, step-stable near-critical adjoint coefficients with consistent grid transfer & $a\simeq-20.765$ and $b\simeq2.808$ retain sign under step halving and across grids & Resolves temporal transversality and quadratic nondegeneracy under the stated discrete convention \\
+Degenerate or tangential critical point & Nonzero, step-stable near-critical discrete-adjoint coefficients with consistent grid transfer & $a\simeq-20.765$ and $b\simeq2.808$ retain sign under step halving and across grids & Resolves temporal transversality and quadratic nondegeneracy under the stated discrete convention \\
 Normalization makes coefficient values ambiguous & State the discrete phase, norm, adjoint, and overlap conventions & $f_R$ has positive-real pivot and unit $\ell_\infty$ norm; the Euclidean left mode is scaled afterward to $f_L^*f_R=1$ & Makes the discrete values reproducible; finite nonzero rescaling cannot alter whether $a$ or $b$ vanishes \\
 Restricted computation misses a nonsymmetric principal instability & Use equivariance together with positivity and uniqueness of the elliptic principal mode & The normalized principal eigenfunction must be $SO(3)$-invariant & Captures the full principal eigenvalue and simple kernel; the nonprincipal nonsymmetric spectrum remains uncomputed \\
 Coordinate branch separation & Invariant area difference follows a one-half power with fit sensitivity & Spatial free fits give $p\simeq0.496$; half-step G10 gives $0.4981$; leave-one-out ranges stay $0.4919$--$0.4996$ & Supplies an invariant saddle-node scaling test without treating fit digits as uncertainty \\
