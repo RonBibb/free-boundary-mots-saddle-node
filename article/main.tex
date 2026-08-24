@@ -1,13 +1,19 @@
-\documentclass[11pt]{article}
+\documentclass[
+  aps,
+  prd,
+  reprint,
+  amsmath,
+  amssymb,
+  nofootinbib,
+  longbibliography
+]{revtex4-2}
 
-\usepackage[margin=0.92in]{geometry}
-\usepackage{amsmath,amssymb,mathtools}
+\usepackage{mathtools}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{hyperref}
-\usepackage{enumitem}
 
 \hypersetup{
   colorlinks=true,
@@ -19,21 +25,19 @@
   pdfsubject={Critical structure of a free-boundary marginally outer trapped surface bifurcation},
   pdfkeywords={braneworld; marginally outer trapped surface; free boundary; saddle-node bifurcation; numerical relativity; Goldberger-Wise stabilization}
 }
-\setlist{nosep}
 \newcommand{\MOTS}{\mathrm{MOTS}}
 \newcommand{\AdS}{\mathrm{AdS}}
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\II}{\mathrm{II}}
 
-\title{Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node\\
-in Dynamical Five-Dimensional Gravity}
-\author{Ronald Bibb\\
-\small Independent Researcher, Lilburn, Georgia, USA\\
-\small Correspondence: \texttt{ronbibb@gmail.com}}
-\date{24 August 2026}
-
 \begin{document}
-\maketitle
+
+\title{Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node
+in Dynamical Five-Dimensional Gravity}
+\author{Ronald Bibb}
+\email{ronbibb@gmail.com}
+\affiliation{Independent Researcher, Lilburn, Georgia, USA}
+\date{August 24, 2026}
 
 \begin{abstract}
 The physical boundary of a marginally outer trapped surface (MOTS) changes the
@@ -64,6 +68,7 @@ realization, not the saddle-node mechanism itself.
 The claim is finite-resolution and quasi-local: it is not a continuum theorem,
 event-horizon reconstruction, or phase diagram.
 \end{abstract}
+\maketitle
 
 \section{Introduction}
 
@@ -137,6 +142,10 @@ reported nonprincipal spectral gap remains restricted to the symmetric
 sector.  The calculation does not identify a global horizon or establish a
 continuum bifurcation theorem.
 
+Further definitions, prespecified acceptance criteria, extended numerical
+controls, negative studies, and the reproducibility mapping are given in the
+Supplemental Material \cite{SupplementalMaterial}.
+
 \section{Model and variational convention}
 
 \subsection{Doubled cover and interval evolution}
@@ -147,13 +156,14 @@ domain is one fundamental interval.  With the Goldberger--Wise field $\Phi$
 and collapse field $\chi$, the covering-space action is
 \begin{align}
 S={}&\frac{1}{2\kappa_5^2}\int_{\widetilde{\mathcal M}}
- \dd^5x\sqrt{-g}\,(R-2\Lambda_5)
--\frac12\int_{\widetilde{\mathcal M}}\dd^5x\sqrt{-g}
- \left[(\nabla\Phi)^2+m_\Phi^2\Phi^2+(\nabla\chi)^2+m_\chi^2\chi^2\right]
-\nonumber\\
+ \dd^5x\sqrt{-g}\,(R-2\Lambda_5) \nonumber\\
+&-\frac12\int_{\widetilde{\mathcal M}}\dd^5x\sqrt{-g}
+ \left[(\nabla\Phi)^2+m_\Phi^2\Phi^2\right] \nonumber\\
+&-\frac12\int_{\widetilde{\mathcal M}}\dd^5x\sqrt{-g}
+ \left[(\nabla\chi)^2+m_\chi^2\chi^2\right] \nonumber\\
 &-\sum_i\int_{\Sigma_i}\dd^4x\sqrt{-h_i}
- \,[\lambda_i+U_i(\Phi)],
-\qquad U_i(\Phi)=\frac{\gamma_i}{2}(\Phi-v_i)^2.
+ \,[\lambda_i+U_i(\Phi)], \nonumber\\
+U_i(\Phi)={}&\frac{\gamma_i}{2}(\Phi-v_i)^2.
 \label{eq:action}
 \end{align}
 The branes are thin shells on the doubled cover; they are not ordinary outer
@@ -190,7 +200,7 @@ historical record in the supplement used $R_{\max}/\ell=8$.  Thus the quoted
 time is $t/\ell$.  The background parameters and primary discretizations are
 listed in Table~\ref{tab:model}.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
 \caption{Dimensionless model and primary numerical parameters.}
 \label{tab:model}
@@ -208,7 +218,7 @@ repaired evolution step & $\Delta t/\ell=3.125\times10^{-5}$ \\
 independent G10 temporal check & $\Delta t/\ell=1.5625\times10^{-5}$ \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 Writing $y=\log z$ and $d=1$, the collapse field is initialized as
 \begin{equation}
@@ -328,15 +338,14 @@ angular-node sequences; no alternative stencil-width study is claimed.
 The nonlinear problem is not merely the scalar equation $\theta_+=0$ on an
 unrestricted profile space.  Before endpoint elimination it is the
 boundary-value map
-\begin{equation}
+\begin{align}
 \widehat{\mathcal F}(\rho,t)
-=\left(\theta_+[\rho;t],\,
-\mathcal R_0[\rho;t],\,\mathcal C_B[\rho;t]\right)=0,
-\qquad
-\mathcal R_0=\rho'(0),\quad
+&=\left(\theta_+,\mathcal R_0,\mathcal C_B\right)[\rho;t]=0,
+\nonumber\\
+\mathcal R_0&=\rho'(0),\qquad
 \mathcal C_B=g(N,\varrho)\big|_{\vartheta=\pi/2},
 \label{eq:free-boundary-map}
-\end{equation}
+\end{align}
 where $\mathcal R_0=0$ enforces smooth-axis regularity and
 $\mathcal C_B=0$ enforces orthogonal brane contact.  Linearization at a
 solution gives the interior stability operator $L$, the axis regularity row,
@@ -362,16 +371,15 @@ f=s f_R+\eta(s,\tau),
 \end{equation}
 Solving the range equation for $\eta$ and projecting the remaining equation onto
 $f_L$ gives the local scalar reduction
-\begin{equation}
+\begin{align}
 0=a\tau+b s^2
-+O\!\left(\tau^2+|\tau s|+|s|^3\right),
-\quad
-a=\left\langle f_L,\partial_t\mathcal F\right\rangle,
-\quad
-b=\frac12\left\langle f_L,
-D_f^2\mathcal F[f_R,f_R]\right\rangle.
++O\!\left(\tau^2+|\tau s|+|s|^3\right), \nonumber\\
+a&=\left\langle f_L,\partial_t\mathcal F\right\rangle,
+\nonumber\\
+\mathcal H&=D_f^2\mathcal F(0,t_*), \nonumber\\
+b&=\tfrac12\langle f_L,\mathcal H[f_R,f_R]\rangle.
 \label{eq:free-boundary-normal-form}
-\end{equation}
+\end{align}
 For $a\neq0$ and $b\neq0$, on the side where $-a\tau/b>0$, the two branches satisfy
 \begin{equation}
 s_\pm=\pm\sqrt{-\frac{a}{b}\tau}+O(\tau).
@@ -472,6 +480,16 @@ separately in their frozen bounded classes.  The separate $A=7.94$ positive
 control belongs to the superseded pre-repair study and is not used to qualify
 this initial null result.
 
+\paragraph*{AI use in the numerical work.}
+OpenAI ChatGPT 5.3 and OpenAI Codex (GPT-5 series, accessed August 2026)
+assisted with code drafting and debugging, prospective protocol development,
+and the organization of numerical audits.  The author specified the equations,
+acceptance criteria, and scientific interpretations; reviewed the generated
+code; and verified the reported outputs through preserved replay tests,
+independent implementations, spatial refinement, and the half-timestep
+calculation.  The tools did not autonomously alter archived data or select
+post hoc acceptance thresholds.
+
 \section{Results}
 
 \subsection{Three-grid zero-to-two formation}
@@ -493,7 +511,7 @@ $3.94\times10^{-5}$ for the principal eigenvalue.  The negative inner and
 positive outer eigenvalues therefore close directly across three spacetime
 grids, rather than being inferred from convergence of the underlying fields.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
 \caption{Direct three-grid pair geometry and stability at $t/\ell=0.0015$.
 $\mathcal A$ is the one-sided proper cap area.}
@@ -507,7 +525,7 @@ G10 & $40.67520099$ & $-0.25895908$ & $40.72845823$ & $+0.29348687$ \\
 G11 & $40.67519977$ & $-0.25896247$ & $40.72845818$ & $+0.29348984$ \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 \subsection{Continuation to the critical surface}
 
@@ -556,7 +574,7 @@ stability, coefficient, and area-scaling calculations.  Table~\ref{tab:temporal-
 shows the direct comparison.  All criteria were fixed before the half-step
 result was examined.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
 \caption{G10 half-timestep comparison.  The $t_*$ entries are bracket
 midpoints; their difference is not an uncertainty estimate.  Differences for
@@ -576,7 +594,7 @@ $R^2$ for squared-area fit & $0.9999804$ & $0.9999951$ & --- \\
 zero-bracket width & $1.72\times10^{-7}$ & $1.79\times10^{-7}$ & --- \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 The full- and half-step critical-time brackets overlap.  Their midpoint shift
 is $9.17\times10^{-10}$, while the brackets themselves remain approximately
@@ -606,7 +624,7 @@ reduced-sector spectral gap.  The principal right mode is real and
 sign-definite.  The unit left--right overlap is imposed by the normalization
 above and is not counted as independent evidence.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
 \caption{Near-critical discrete normal-form observables.  Coefficients are
 evaluated at the smaller-magnitude endpoint of the final zero bracket; the
@@ -623,7 +641,7 @@ square-root exponent $p$ & $0.4959$ & $0.4960$ & $0.4960$ \\
 $R^2$ for $(\Delta\mathcal A)^2$ fit & $0.9999801$ & $0.9999804$ & $0.9999803$ \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 The centered step-halving evaluations of Eq.~\eqref{eq:normal-form-coefficients}
 retain $a<0$ and $b>0$ on every grid.
@@ -737,8 +755,7 @@ reusable numerical test of the boundary-sensitive normal form.  A separate
 future study may use these leaves to investigate a marginal tube or other
 global horizon observables; none is claimed here.
 
-\enlargethispage{\baselineskip}
-\section*{Acknowledgments}
+\begin{acknowledgments}
 
 I owe a deeply personal debt of gratitude to Chunshan Lin, whose paper
 \cite{Lin2026} was the intellectual spark for this project.  Although the
@@ -747,7 +764,13 @@ that work made the present study possible.  I am equally and deeply grateful
 to Hazel HB, whose steadfast support, patience, and encouragement sustained me
 throughout a long and demanding research process.
 
-\section*{Data and code availability}
+OpenAI ChatGPT 5.3 and OpenAI Codex (GPT-5 series, accessed August 2026) also
+assisted with literature organization and manuscript drafting and revision.
+The author checked the cited sources and assumes full responsibility for the
+accuracy, interpretation, and final text.
+\end{acknowledgments}
+
+\section*{Data Availability}
 
 Machine-readable results, frozen protocols, source manifests, tests, and the
 scripts supporting the figures are archived at Zenodo under
@@ -758,7 +781,7 @@ test suite are publicly available in the
 The Zenodo record is the citable archival authority for the scientific
 results.
 
-\bibliographystyle{unsrt}
+\bibliographystyle{apsrev4-2}
 \bibliography{references}
 
 \end{document}

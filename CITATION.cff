@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or its archived records, please cite the associated paper and Zenodo record."
-title: "A Numerically Resolved Free-Boundary MOTS Saddle-Node in Dynamical Braneworld Collapse"
+title: "Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node in Dynamical Five-Dimensional Gravity"
 type: software
 authors:
   - family-names: Bibb
@@ -8,7 +8,6 @@ authors:
     affiliation: "Independent Researcher"
 version: 1.0.0
 date-released: 2026-08-24
-doi: 10.5281/zenodo.22085055
+doi: 10.5281/zenodo.22087164
 repository-code: "https://github.com/RonBibb/free-boundary-mots-saddle-node"
-url: "https://doi.org/10.5281/zenodo.22085055"
-
+url: "https://doi.org/10.5281/zenodo.22087164"

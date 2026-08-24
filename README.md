@@ -1,6 +1,6 @@
-# A Numerically Resolved Free-Boundary MOTS Saddle-Node in Dynamical Braneworld Collapse
+# Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node in Dynamical Five-Dimensional Gravity
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22085055.svg)](https://doi.org/10.5281/zenodo.22085055)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22087164.svg)](https://doi.org/10.5281/zenodo.22087164)
 
 This repository contains the complete Python source and test surface, frozen
 protocol implementations, and publication files for the accompanying paper.
@@ -11,7 +11,7 @@ Goldberger--Wise-stabilized braneworld.
 The repository is deliberately **code-only with respect to scientific
 outputs**. Numerical candidate outputs, checkpoints, and large result arrays
 are not committed to Git. The citable archival record is
-[Zenodo 10.5281/zenodo.22085055](https://doi.org/10.5281/zenodo.22085055).
+[Zenodo 10.5281/zenodo.22087164](https://doi.org/10.5281/zenodo.22087164).
 
 ## Repository contents
 
@@ -30,8 +30,12 @@ are not committed to Git. The citable archival record is
 | `article/supplement.tex` | Supplemental-material source. |
 | `article/references.bib` | Shared bibliography. |
 | `article/figures/` | The two publication figures as committed PDF assets. |
-| `article/pdfs/article.pdf` | Compiled 11-page article. |
-| `article/pdfs/supplement.pdf` | Compiled 15-page supplement. |
+| `article/pdfs/article.pdf` | Earlier compiled article retained for exact comparison. |
+| `article/pdfs/supplement.pdf` | Earlier compiled supplement retained for exact comparison. |
+| `article/pdfs/prd-manuscript.pdf` | Eight-page REVTeX draft prepared for submission to *Physical Review D*. |
+| `article/pdfs/prd-supplement.pdf` | Fifteen-page supplement accompanying the PRD draft. |
+| `article/pdfs/prd-cover-letter.pdf` | One-page cover letter for the PRD Research Article submission. |
+| `article/cover-letter-prd.tex` | Editable source for the PRD cover letter. |
 | `article/make_figures.py` | Figure-generation source. It expects the separately archived result records described below. |
 | `article/CITATION_AUDIT_2026-08-24.md` | Final bibliography and cross-reference audit. |
 
@@ -101,6 +105,8 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error \
   -outdir=build/main main.tex
 latexmk -pdf -interaction=nonstopmode -halt-on-error \
   -outdir=build/supplement supplement.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error \
+  -outdir=build/cover-letter cover-letter-prd.tex
 ```
 
 The committed PDFs are provided for exact reading and comparison. The
@@ -132,6 +138,6 @@ source ownership.
 
 Use the citation metadata in `CITATION.cff` and cite the permanent archive:
 
-> Ronald Bibb, *A Numerically Resolved Free-Boundary MOTS Saddle-Node in
-> Dynamical Braneworld Collapse*, Zenodo,
-> [doi:10.5281/zenodo.22085055](https://doi.org/10.5281/zenodo.22085055), 2026.
+> Ronald Bibb, *Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node in
+> Dynamical Five-Dimensional Gravity*, Zenodo,
+> [doi:10.5281/zenodo.22087164](https://doi.org/10.5281/zenodo.22087164), 2026.
