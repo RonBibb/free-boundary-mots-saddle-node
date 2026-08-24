@@ -1,0 +1,9 @@
+[project]
+name = "brane-horizon-phase-structure"
+version = "0.1.0"
+description = "Horizon phase structure in compact stabilized braneworlds"
+requires-python = ">=3.11"
+dependencies = ["numpy", "scipy", "sympy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

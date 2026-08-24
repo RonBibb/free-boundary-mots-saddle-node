@@ -1,0 +1,853 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,longtable,array}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={Supplemental Material: A Numerically Resolved Free-Boundary MOTS Saddle-Node in Dynamical Braneworld Collapse},
+  pdfauthor={Ronald Bibb},
+  pdfsubject={Validation and reproducibility record for a free-boundary MOTS saddle-node},
+  pdfkeywords={braneworld; marginally outer trapped surface; free boundary; saddle-node bifurcation; numerical relativity; supplemental material}
+}
+\setlist{nosep}
+\newcommand{\MOTS}{\mathrm{MOTS}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\PASS}{\textsc{pass}}
+\newcommand{\FAIL}{\textsc{fail}}
+\newcommand{\II}{\mathrm{II}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Supplemental Material for\\
+``A Numerically Resolved Free-Boundary MOTS Saddle-Node\\
+in Dynamical Braneworld Collapse''}
+\author{Ronald Bibb\\
+\small Independent Researcher, Lilburn, Georgia, USA\\
+\small Correspondence: \texttt{ronbibb@gmail.com}}
+\date{24 August 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose and evidentiary scope}
+
+This supplement gives the definitions, acceptance criteria, extended numerical
+results, negative studies, and reproducibility structure underlying the main
+article.  The central inference is deliberately bounded: an independently
+constructed G9/G10/G11 parent sequence evolves from no accepted upper-brane-capped
+marginally outer trapped surface (MOTS) to two opposite-stability branches,
+and pseudo-arclength continuation resolves their common critical surface.
+An isolated near-critical principal mode accompanies the bracketed zero
+crossing, the adjoint transversality and quadratic coefficients are nonzero,
+and the invariant area separation follows a one-half power.  This establishes
+a finite-resolution numerical
+free-boundary MOTS saddle-node in the $SO(3)$-symmetric sector of the
+specified stabilized compact two-brane model.  An independent G10
+half-timestep evolution and continuation strongly constrains the shared temporal-bias
+concern under prospective comparison criteria: the critical-time brackets
+overlap, while the near-critical geometry and normal-form diagnostics agree.
+The saddle-node mechanism
+itself is established theory
+\cite{BoothCoxOkpala2026}; it is not claimed as a new mechanism.
+
+The result is numerical and quasi-local.  It is not an event-horizon
+reconstruction, a proof excluding every possible initial marginal surface, a
+continuum theorem, or a nonlinear-stability theorem.  It also does not
+determine the nonsymmetric nonprincipal spectrum.  Those exclusions are part of the
+result's scope, not caveats to be silently relaxed.
+
+The validation record is organized by scientific risk.  Each principal test
+has four elements: the alternative explanation being tested, a criterion fixed
+before interpretation, the measured outcome, and the consequence for the
+claim.  Operational details---hashes, complete runner histories, environment
+receipts, and restart records---belong to the reproducibility archive rather
+than to the scientific argument.
+
+The novelty claim is correspondingly narrow.  Cigar-shaped apparent horizons
+in braneworld initial data and dynamically formed brane-intersecting horizons
+in RSII precede this work \cite{ShiromizuShibata2000,WangChoptuik2016}, while
+MOTS pair creation is already classified as a saddle-node bifurcation
+\cite{BoothCoxOkpala2026}.  The present result adds a resolved critical
+free-boundary structure---not only pair formation---in compact two-brane
+geometry with explicit Goldberger--Wise stabilization.  No universal or new
+mechanism is claimed.
+
+More specifically, the novelty is not pair creation, the fold classification,
+the one-half exponent, pseudo-arclength continuation, free-boundary stability
+theory, or dynamical braneworld collapse separately.  It is their
+load-bearing conjunction: a nonlinear five-dimensional evolved geometry, a
+brane-terminating MOTS domain with an induced Robin condition, a
+non-self-adjoint stability operator, and normal-form data reproduced across
+three spatial grids and an independent half-timestep evolution.  This is a new numerical realization of the general MOTS
+bifurcation framework, not a proposed new bifurcation mechanism.
+
+\section{Model, fields, and conventions}
+
+The bulk model is five-dimensional Einstein gravity with
+$\Lambda_5=-6/\ell^2$ on the doubled $S^1/\mathbb{Z}_2$ cover.  The numerical
+domain is the fundamental compact interval with fixed branes at its endpoints.
+The matter sector contains a Goldberger--Wise stabilizer $\Phi$ and an
+independent collapse scalar $\chi$
+\cite{RandallSundrum1999,GoldbergerWise1999,DeWolfeFreedmanGubserKarch2000,TanahashiTanaka2011}:
+\begin{align}
+S={}&\frac{1}{2\kappa_5^2}\int\dd^5x\sqrt{-g}\,(R-2\Lambda_5)
+-\sum_i\int_{\Sigma_i}\dd^4x\sqrt{-h_i}\,[\lambda_i+U_i(\Phi)]
+\nonumber\\
+&-\frac12\int\dd^5x\sqrt{-g}\left[(\nabla\Phi)^2+m_\Phi^2\Phi^2
++(\nabla\chi)^2+m_\chi^2\chi^2\right],
+\end{align}
+with $U_i(\Phi)=\gamma_i(\Phi-v_i)^2/2$.  The induced metric obeys the
+oriented Israel conditions, the stabilizer obeys the action-derived scalar
+wall condition, and $\chi$ obeys reflecting Neumann data.  The computation
+retains the stabilizer response; it does not integrate out the radion.
+The displayed action is the doubled-cover thin-shell action.  An equivalent
+one-sided interval variational principle includes the appropriate
+Gibbons--Hawking--York terms and doubles the one-sided bulk contribution
+relative to each brane action
+\cite{Israel1966,GibbonsHawking1977,BattyeCarter2001}.  With outward normals it yields
+\begin{equation}
+K^{(B)}_{\mu\nu}=\frac{\kappa_5^2}{2}
+\left(S_{\mu\nu}-\frac13 S h_{\mu\nu}\right),
+\qquad n^a_{\rm out}\nabla_a\Phi=-\frac12 U_i'(\Phi),
+\end{equation}
+which is the sign and factor convention implemented at both interval walls.
+
+We impose $SO(3)$ symmetry in the three noncompact spatial directions while
+retaining dependence on areal radius $r$ and compact coordinate $z$.  Initial
+data are momentarily time symmetric,
+\begin{equation}
+K_{ij}=0,\qquad \Pi_\Phi=0,\qquad \Pi_\chi=0,
+\end{equation}
+and contain a smooth reflection-adjusted scalar pulse localized near the upper
+brane.  The primary datum is the family member labelled $A=7.90$.  The label is
+a numerical family coordinate, not an invariant critical parameter.
+
+Table~\ref{tab:model-parameters} gives the dimensionless parameters needed to
+identify the reported family.  We use $\ell=\kappa_5=1$, so the compact
+coordinate spans $z\in[1,e]$.  The load-bearing repaired G9/G10/G11 line uses
+$r/\ell\in[0,10]$.  The superseded pre-repair G7/G8 trajectory, retained only
+as a historical record below, used $r/\ell\in[0,8]$.
+The stabilizer targets are $v_0=\sqrt{0.01}$ and
+$v_1=v_0e^{-0.1}$, and $m_\Phi^2=0.1(4.1)=0.41$.  The wall tensions are
+retuned consistently with the finite-stiffness background solve rather than
+held at their unstabilized values.
+
+\begin{table}[ht]
+\centering
+\caption{Primary dimensionless model and discretization parameters.}
+\label{tab:model-parameters}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Quantity & Value \\
+\midrule
+$\ell$, $\kappa_5$, compact separation $d/\ell$ & $1$, $1$, $1$ \\
+$\epsilon$, Goldberger--Wise backreaction, $m_\Phi^2$ & $0.1$, $0.01$, $0.41$ \\
+wall stiffness $\gamma\ell$ & $20$ \\
+wall targets $v_0,v_1$ & $0.1$, $0.0904837418036$ \\
+retuned bare tensions $\lambda_0,\lambda_1$ & $5.9999903768$, $-6.0528442777$ \\
+background warp slopes $\beta_0,\beta_1$ & $1$, $1.00880714399$ \\
+background proper separation$/\ell$ & $0.9996389584$ \\
+collapse-scalar mass $m_\chi^2$ & $0$ \\
+pulse amplitude $A$, radial width $\sigma_r$ & $7.90$, $1$ \\
+compact-log width $\sigma_y$, center $y_c/d$, images & $0.2$, $0.9$, $5$ \\
+historical pre-repair domain and grids & $R_{\max}/\ell=8$; G7 $81\times121$, G8 $97\times145$ \\
+repaired critical-sequence domain & $R_{\max}/\ell=10$ \\
+repaired critical grids & G9 $113\times211$, G10 $129\times241$, G11 $145\times271$ \\
+critical and half-step $\Delta t/\ell$ & $3.125\times10^{-5}$, $1.5625\times10^{-5}$ \\
+background solve tolerance & $10^{-10}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The background values in Table~\ref{tab:model-parameters} are the sealed
+binary64 parent values; the last quoted digits of $\beta_1$, the upper-wall
+tension, and the proper separation vary below $7\times10^{-13}$,
+$5\times10^{-13}$, and $3\times10^{-10}$, respectively, between the two
+archived parent resolutions.  These numerical values, rather than only their
+analytic target formulas, are included in the replay package.
+
+For a spatial-slice unit normal $u^a$ and outward surface normal $s^a$, the
+outgoing null normal is $\ell_+^a=u^a+s^a$ and
+\begin{equation}
+\theta_+=D_i s^i+K_{ij}s^is^j-K.
+\end{equation}
+A MOTS satisfies $\theta_+=0$.  An upper-brane-capped surface closes regularly on the
+axis and meets the upper brane orthogonally.  Orthogonal contact with the
+support hypersurface is the free-boundary condition used in the cited
+literature, and it is precisely the brane endpoint condition imposed here.
+The cap is therefore a brane-terminating free-boundary surface; free-boundary and
+capillary MOTS stability have an independent mathematical literature
+\cite{AlaeeLesourdYau2020,Chai2024,Mendes2021,Lee2025}, while higher-dimensional MOTSs
+have also been treated directly \cite{PaetzSimon2013}.  Linear stability is defined by
+\begin{equation}
+L f=\delta_{f s}\theta_+.
+\end{equation}
+In the convention used here, a nonnegative principal eigenvalue is
+outward-stable.  The evolved-slice operator is treated as non-self-adjoint.
+The interpretation follows the local MOTS-stability framework of
+Refs.~\cite{AnderssonMarsSimon2005,AnderssonMarsSimon2008,AnderssonMarsMetzgerSimon2009,PookKolbEtAl2019}.
+The operator and Robin domain commute with $SO(3)$.  Positivity and uniqueness
+of the elliptic principal eigenfunction up to scale then force that mode to be
+$SO(3)$-invariant: a group transform is another normalized positive principal
+eigenfunction and hence the same one.  The symmetric computation therefore
+captures the full principal eigenvalue and simple principal kernel, although
+it does not determine the nonsymmetric nonprincipal spectrum.
+
+The perturbation class is not left implicit.  Writing a nearby cap as
+$\rho(\vartheta)+\delta\rho(\vartheta)$, smooth-axis closure and preservation
+of orthogonal wall contact impose
+\begin{equation}
+\partial_\vartheta\delta\rho=0
+\quad\hbox{at}\quad \vartheta=0,\pi/2.
+\end{equation}
+The operator acts on physical normal displacement
+$f=w\delta\rho$, where $w=s_Ae_\rho^A>0$.  Hence the implemented condition is
+$\partial_\vartheta(f/w)=0$, a homogeneous Robin condition for $f$ when $w$
+is nonconstant.  The endpoints are eliminated with seven-point local finite
+differences before the unsymmetrized right-eigenvalue problem is solved.  This
+boundary treatment is checked by the manufactured Robin spectrum, endpoint
+defects below $10^{-10}$, and the 49/65/81-node sequences.  No alternative
+stencil-width study is claimed.
+
+\section{Initial-data and search protocol}
+
+\subsection{Bounded initial search}
+
+The load-bearing absence datum is the repaired G9/G10/G11 search at
+$t/\ell=0.001$ described in Sec.~\ref{sec:repaired-preformation}; it is followed
+by exactly two admitted surfaces at $t/\ell=0.0015$ on those same parent lines.
+The earlier searches summarized in this subsection were performed during the
+superseded pre-repair study and are preserved only to document how the repaired
+calculation was motivated.  They are not independent confirmation of the
+repaired result.  Within that historical record, ``no initial MOTS'' means
+``no accepted surface in the prespecified bounded search,'' not an analytic
+nonexistence theorem.
+The principal initial class consists of $C^2$, axisymmetric, star-shaped
+upper-brane-capped polar graphs
+\begin{equation}
+z=z_B-\rho(\vartheta)\cos\vartheta,\qquad
+r=\rho(\vartheta)\sin\vartheta,
+\end{equation}
+with $0\leq\vartheta\leq\pi/2$,
+$\rho'(0)=\rho'(\pi/2)=0$, and
+$0.10\leq\rho(\vartheta)\leq1.67$.  Separate bounded searches cover
+opposite-side capped, closed-star-shaped, and interval-spanning candidates.
+Acceptance requires finite geometry, admissible domain and endpoint behavior,
+a residual below the fixed tolerance, and repeated recovery under the
+specified seed families.
+
+For the historical $A=7.90$ datum, the initial upper-brane-capped searches
+return no accepted surface.  The same is true for the five-point R8 sample
+$A=7.84,7.86,7.88,7.90,7.92$.  An adverse $A=7.94$ control recovers its known
+initial pair.  On each separately constraint-solved G9 and G10 initial slice,
+a regular-axis shooting audit samples 2,049 uniformly spaced axis radii across
+$[0.10,1.67]$.  The independently minimized brane residual stays positive,
+$0.0280624085$ on G9 and $0.0282193410$ on G10, under twelve cutoff,
+tolerance, and step variations.  The same implementation resolves both nearby
+$A=7.94$ control roots to residuals of order $10^{-13}$.  The grade remains a
+strong floating-point no-root result rather than an interval or degree proof:
+an arbitrarily narrow unsampled root island is not mathematically excluded.
+
+\subsection{Surface representations}
+
+On the historical pre-repair trajectory, the primary evolved-surface
+representation uses the fixed twelve-seed bank
+$1.15,1.20,\ldots,1.70$.  Every seed is solved at 40 and 48 cosine modes on
+257 collocation points, with expansion target $5\times10^{-4}$.  A candidate
+requires two-mode convergence in-domain below condition number $10^5$, full
+profile and endpoint agreement within $0.2\%$, and an independent 513-point
+expansion below $0.002$; signatures within $0.005$ are deduplicated.  The
+confirmation representation is an independently
+parameterized local boundary-value problem.  Acceptance requires agreement in
+branch count, endpoint geometry, and proper cap area.  Both representations
+operate on the same evolved spacetime, so their agreement constrains detector
+and parameterization error but is not an independent evolution.
+
+The $10^5$ condition-number ceiling belongs only to that historical spectral
+detector.  The load-bearing repaired search and critical continuation below
+use the distinct local second-order BVP and
+does not call or inherit that ceiling; its admission uses the local residual,
+endpoint slope, physical domain, and independent expansion cross-check.
+Accordingly, proximity to the principal zero cannot remove a continuation
+point through the spectral-detector condition gate.  No critical
+condition-number trace was archived, and none is used as evidence for the
+saddle-node classification.
+
+The BVP detector solves the local second-order cap equation with
+$\rho'(0)=\rho'(\pi/2)=0$ from the same twelve scalar seeds.  Admission
+requires local interior expansion below $2\times10^{-4}$, endpoint-slope error
+below $2\times10^{-4}$, and a cross-check by the primary expansion evaluator
+below $0.002$.  Its flat-slice control reproduces the analytic marginal
+half-sphere radius $1.25$ to $3.91\times10^{-11}$ relatively and gives an
+independent expansion maximum $3.66\times10^{-6}$.
+
+In the historical pre-repair record, at $t=0.000625$, $0.001$, and $0.004$,
+each G7/G8 grid yields exactly two accepted branches, with six seed recoveries
+per branch.  The largest
+shooting/BVP endpoint mismatch is $0.04764\%$ and the largest cross-grid BVP
+endpoint transfer is $0.23205\%$.
+
+\section{Evolution and ordered acceptance gates}
+
+The Einstein--scalar system is evolved in a regular $SO(3)$-reduced
+generalized-harmonic formulation \cite{Pretorius2005}.  Compact-wall rows own the wall conditions;
+axis regularity owns interior-axis rows; wall--axis and wall--outer corners use
+an explicitly staged ownership policy.  The canonical policy is the scientific
+path, while an independent wall-owner policy is retained as a control.
+
+The ordered gate structure prevents a later geometric observation from
+overriding an earlier invalid computation:
+\begin{enumerate}
+\item runtime, source, and input identity;
+\item finite values, signature, and physical admissibility;
+\item compact-wall, axis, corner, and ownership identities;
+\item repeated deterministic replay;
+\item temporal refinement and endpoint consistency;
+\item spatial field and physical-tensor closure;
+\item horizon count, geometry, and stability interpretation.
+\end{enumerate}
+An audit or determinism failure is not relabelled as a scientific negative
+result.  A resource stop carries no scientific inference.
+
+\section{Formation, geometry, and stability}
+
+\subsection{Free-boundary stability condition}
+
+Let $\varrho$ be the outward unit normal to the brane within the spatial
+slice, $N$ the unit normal to the MOTS, and $\nu$ the outward conormal to its
+boundary.  Orthogonal contact gives $\nu=\varrho$ and
+$g(N,\varrho)=0$.  For a physical normal variation $fN$, varying this
+orthogonality relation gives the free-boundary operator
+\begin{equation}
+Bf=\nabla_\nu f-\II^{\partial M}(N,N)f=0.
+\end{equation}
+Thus the brane-extrinsic-curvature term is part of the physical problem.
+
+For the implemented upper-brane cap, the compact endpoint lies on the upper wall
+$z=e$.  The retained interval lies toward decreasing $z$, so its outward wall
+normal is $\varrho=h_{zz}^{-1/2}\partial_z$.  We choose the outward cap
+conormal $\nu=\varrho$, the MOTS normal toward increasing areal radius,
+$N=h_{rr}^{-1/2}\partial_r$, and
+$\II^{\partial M}(X,Y)=g(\nabla_X\varrho,Y)$.  Wall parity gives
+$h_{zr}=0$.  With these fixed orientations, the physical
+normal amplitude associated with a coordinate graph displacement
+$\delta\rho$ is $f=w\delta\rho$ with $w=\sqrt{h_{rr}}$.  The same geometry
+gives
+\begin{equation}
+\II^{\partial M}(N,N)=\frac12\nu(\log h_{rr})=\nu(\log w),
+\qquad Bf=w\nu(\delta\rho).
+\end{equation}
+Consequently the implemented endpoint condition
+$\partial_\vartheta\delta\rho=0$, equivalently
+$\partial_\vartheta(f/w)=0$, is the coordinate reduction of the physical
+Robin condition; it does not omit the brane-curvature contribution.  The
+zero derivative at the axis is separately the smooth-axis regularity
+condition.
+
+\subsection{Three-grid formation comparison}
+
+The primary repaired critical line is independently constructed on G9
+$113\times211$, G10 $129\times241$, and G11 $145\times271$.  The prescribed
+surface search accepts no branch at $t/\ell=0.001$ and exactly two at
+$t/\ell=0.0015$ on every grid.  All endpoint, proper-geometry, principal-sign,
+operator-resolution, and Robin-boundary gates pass.  The direct observables
+are listed in Table~\ref{tab:supp-three-grid}.
+
+\begin{table}[ht]
+\centering
+\caption{Three-grid repaired-parent surface observables at $t/\ell=0.0015$.}
+\label{tab:supp-three-grid}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+grid & $\mathcal A_{\rm in}$ & $\lambda_{\rm in}$ & $\mathcal A_{\rm out}$ & $\lambda_{\rm out}$ \\
+\midrule
+G9  & $40.67520320$ & $-0.25894888$ & $40.72845794$ & $+0.29347891$ \\
+G10 & $40.67520099$ & $-0.25895908$ & $40.72845823$ & $+0.29348687$ \\
+G11 & $40.67519977$ & $-0.25896247$ & $40.72845818$ & $+0.29348984$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For G9--G10, the maximum endpoint, geometry, and relative-eigenvalue
+differences are $1.022\times10^{-6}$, $1.764\times10^{-7}$, and
+$3.938\times10^{-5}$, respectively.  For G10--G11 they are
+$6.529\times10^{-7}$, $1.177\times10^{-7}$, and
+$1.311\times10^{-5}$.  Thus the repaired line's earlier absence at
+$t/\ell=0.001$ is a pre-formation datum, not a permanent failure to form the
+pair.
+
+\subsection{Pseudo-arclength continuation and zero bracket}
+
+Starting from the outer branch at $t/\ell=0.0015$, time is promoted to an
+unknown of the local cap BVP and an integral pseudo-arclength condition is
+added \cite{Keller1977}.  The spacetime state between exact RK2 endpoints uses the fixed dense
+extension
+\begin{equation}
+y(\theta)=y_n+\Delta t[(\theta-\theta^2)k_1+\theta^2k_2],
+\qquad \theta=(t-t_n)/\Delta t .
+\end{equation}
+Every replayed endpoint is bitwise identical to the stored evolution.  Each
+accepted continuation point starts from arclength step $1/64$ and permits only
+the prespecified dyadic backoff through $1/4096$; zero-bracket refinement has
+the technical floor $1/65536$.  The augmented BVP uses 121 initial angular
+nodes, relative tolerance $2\times10^{-6}$, at most 6,000 adaptive nodes, and
+a 501-node dense output.  An accepted corrector must also have absolute
+arclength residual at most $2\times10^{-5}$ before the fixed-time surface is
+re-solved and passed through the inherited local and cross-evaluator gates.
+
+The principal eigenvalue first changes sign and remains resolved under
+bracket refinement.  Table~\ref{tab:supp-critical} reports the final bracket
+and near-critical discrete data.  The displayed $\lambda_*$ and coefficients
+are evaluated at the smaller-magnitude endpoint of the final bracket rather
+than at an exact floating-point kernel.
+
+\begin{table}[ht]
+\centering
+\caption{Three-grid critical-time estimate and near-critical discrete operator
+and normal-form data.  $\mathcal A_{\rm nc}$ is evaluated at the selected
+bracket endpoint rather than an exact critical surface.}
+\label{tab:supp-critical}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+quantity & G9 & G10 & G11 \\
+\midrule
+$t_*/\ell$ & $0.0011725421$ & $0.0011725452$ & $0.0011725359$ \\
+time-bracket width & $1.8426\times10^{-7}$ & $1.7177\times10^{-7}$ & $1.8667\times10^{-7}$ \\
+$\mathcal A_{\rm nc}$, one-sided & $40.70345140$ & $40.70336590$ & $40.70344580$ \\
+$\lambda_*$ & $-7.3854\times10^{-4}$ & $-1.6944\times10^{-3}$ & $-7.8666\times10^{-4}$ \\
+next reduced-sector eigenvalue & $5.56598$ & $5.56531$ & $5.56595$ \\
+imposed $f_L^*f_R$ & $1.0000000$ & $1.0000000$ & $1.0000000$ \\
+near-critical $a=\langle f_L,\partial_t\theta_+\rangle$ & $-20.76513$ & $-20.76565$ & $-20.76493$ \\
+near-critical $b=\tfrac12\langle f_L,\partial_{f_R}^2\theta_+\rangle$ & $2.80717$ & $2.80410$ & $2.81060$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The mode convention is exact.  The Robin endpoint rows are first eliminated,
+so the stability matrix acts on physical normal displacement $f$ at the
+interior uniform $\vartheta$ nodes.  Its right eigenvector is phased so that
+the component of largest modulus is positive real and then scaled to
+$\|f_R\|_\infty=1$.  The left vector is the Euclidean
+conjugate-transpose eigenvector of that reduced matrix, not a mass-matrix
+adjoint or a separately discretized formal continuum adjoint.  It is scaled
+afterward to $f_L^*f_R=1$.  Thus the reported unit overlap is a construction
+identity, not an additional nondegeneracy observation.  Before rescaling, the
+code requires only that the overlap magnitude exceed $10^{-14}$; that value
+was not archived.  The endpoint behavior of $f_R$ is restored through the
+same Neumann extension that implements the Robin graph condition.  The
+near-critical coefficient magnitudes and individual signs are reproducible
+under this discrete orientation convention, while their nonvanishing is the
+normal-form conclusion.
+An admissible change of eigenvector normalization rescales $a$ and $b$ by
+finite nonzero factors; it changes their numerical magnitudes but cannot
+change whether either coefficient vanishes.
+
+The near-critical principal mode is real and sign-definite on each grid.  The 65--81-node
+principal differences lie between $3.59\times10^{-5}$ and
+$3.78\times10^{-5}$; the doubled-step differences are approximately
+$4.78\times10^{-4}$.  The next mode is more than five units away.  Centered
+step halving changes $a$ by at most $1.56\times10^{-9}$ and $b$ by at most
+$2.67\times10^{-3}$ without changing either sign.  Relative adjacent-grid
+transfers are at most $3.46\times10^{-5}$ for $a$ and
+$2.32\times10^{-3}$ for $b$, far below the prospective $0.20$ ceilings.
+The G9/G10/G11 sequences for $t_*$, $\mathcal A_{\rm nc}$, $a$, and $b$ are all
+nonmonotone.  Their full relative spreads are, respectively,
+$7.87\times10^{-6}$, $2.10\times10^{-6}$,
+$3.46\times10^{-5}$, and $2.31\times10^{-3}$.  Consequently no real
+three-level Richardson order is defined and no continuum-extrapolated value
+or uncertainty is inferred.  The evidence is small finite-resolution scatter
+plus the independent temporal comparison below.  The isolated near-critical
+principal mode and bracketed zero crossing are consistent with a simple
+principal critical kernel.  The roles of that kernel, the transversality
+coefficient, and the nonzero quadratic term are those of the standard fold
+normal form \cite{Kuznetsov2004}.
+
+\subsection{Invariant square-root test}
+
+Both branches are solved at the five prespecified offsets
+$t=t_*+(1,2,4,8,16)\Delta t/16$.  A linear fit of
+$(\mathcal A_{\rm out}-\mathcal A_{\rm in})^2$ against time gives the results in
+Table~\ref{tab:supp-scaling}.  The fitted critical times agree with the
+continuation estimates within the frozen temporal criterion.
+
+\begin{table}[ht]
+\centering
+\caption{Invariant proper-area scaling fits.  The displayed $R^2$ is for the
+linear fit of $(\Delta\mathcal A)^2$ against time; the exponent comes from a
+separate log--log fit using the critical time inferred by that linear fit.}
+\label{tab:supp-scaling}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+grid & $t_{*,\rm fit}/\ell$ & free exponent $p$ & squared-fit $R^2$ \\
+\midrule
+G9  & $0.0011725485$ & $0.4959125$ & $0.9999801$ \\
+G10 & $0.0011725343$ & $0.4959672$ & $0.9999804$ \\
+G11 & $0.0011725265$ & $0.4959590$ & $0.9999803$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All nine per-grid critical gates and both adjacent-grid aggregate gates pass.
+
+The fit-sensitivity audit separates the two fits rather than treating their
+statistics as interchangeable.  Holding $t_*$ at the independently obtained
+continuation midpoint gives free exponents $0.49644$, $0.49507$, and
+$0.49518$ on G9, G10, and G11.  Omitting one offset at a time gives the ranges
+$0.49361$--$0.49956$, $0.49187$--$0.49865$, and
+$0.49201$--$0.49872$.  Fixing $p=1/2$ and optimizing only the amplitude gives
+maximum relative residuals $0.00920$, $0.01173$, and $0.01153$.  These tests
+support the half-power classification while showing that the seventh decimal
+place of the original free exponent is not an uncertainty estimate.
+
+\subsection{Independent G10 half-timestep comparison}
+
+The three spatial grids use the same RK2 step and dense extension.  A
+prospectively frozen G10 calculation therefore halved the step from
+$3.125\times10^{-5}$ to $1.5625\times10^{-5}$, reconstructed the parent from
+$t/\ell=0.001$ to $0.0015$ in 32 steps, solved both endpoint anchors anew,
+replayed the complete half-step trajectory, and repeated every load-bearing
+continuation and critical calculation.  Table~\ref{tab:supp-temporal} gives
+the result.
+
+\begin{table}[ht]
+\centering
+\caption{G10 half-timestep comparison.  The $t_*$ entries are zero-bracket
+midpoints; their difference is not an uncertainty estimate.  The
+$\mathcal A_{\rm nc}$, $a$, and $b$ differences are relative, with
+$\mathcal A_{\rm nc}$ evaluated at the selected near-critical endpoint.}
+\label{tab:supp-temporal}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+quantity & full step & half step & difference \\
+\midrule
+$t_*/\ell$ & $0.001172545169$ & $0.001172544252$ & $9.1732\times10^{-10}$ \\
+$\mathcal A_{\rm nc}$ & $40.70336590$ & $40.70340030$ & $8.4495\times10^{-7}$ \\
+$a$ & $-20.76564697$ & $-20.76535233$ & $1.4189\times10^{-5}$ \\
+$b$ & $2.80409588$ & $2.80435486$ & $9.2348\times10^{-5}$ \\
+free exponent $p$ & $0.495967$ & $0.498057$ & --- \\
+squared-fit $R^2$ & $0.9999804$ & $0.9999951$ & --- \\
+zero-bracket width & $1.7177\times10^{-7}$ & $1.7918\times10^{-7}$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The full- and half-step zero brackets overlap.  Their midpoint shift is
+$9.1732\times10^{-10}$, whereas their widths are $1.7177\times10^{-7}$ and
+$1.7918\times10^{-7}$; the shift is not an uncertainty estimate for $t_*$.  The
+half-step result retains the real sign-definite near-critical principal mode,
+reduced-sector spectral gap, nonzero coefficient signs, and area-scaling gate.
+Both independently evolved parents also pass the same finite-value, signature,
+constraint, wall, axis, and endpoint gates.  This repeat is an indirect check
+against a systematic temporal-evolution error; it is not a standalone
+constraint-convergence study.  The free exponent moves from $0.495967$ to
+$0.498057$, toward the expected one-half value.  Together with the fit-sensitivity
+ranges above, that movement is consistent with the residual exponent offset
+being dominated by temporal-discretization bias rather than a fitting artifact,
+but two time steps do not define a temporal convergence order.
+The prospective limits were $\Delta t/64$ for the bracket-midpoint shift,
+$1\%$ for the area, $20\%$ for each coefficient, and $0.4\leq p\leq0.6$ in both
+runs.  Every comparison passes, so the prescribed decision sequence does not
+call for a quarter-step run.
+
+\subsection{Historical pre-repair formation record}
+
+The following G7/G8 trajectory predates the canonical parity repair and is
+retained for provenance rather than counted as independent evidence for the
+repaired saddle-node.  Both historical grids are empty in the bounded initial upper-brane-capped search and
+then contain two accepted branches in the common bracket
+\begin{equation}
+0.000500<t_{\rm form}\leq0.000625.
+\end{equation}
+The pair remains accepted at $t=0.001$ and $t=0.004$.  The independent BVP
+representation reproduces the zero-to-two transition.  Figure~\ref{fig:supp-formation}
+shows the shared formation bracket and the subsequent growth of the proper-area
+separation.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{figures/formation-and-separation.pdf}
+\caption{Historical pre-repair realization, retained for provenance and not
+used as independent support for the repaired result.  \textbf{Left:} admitted
+upper-brane-capped root count on the two G7/G8 grids.  Both histories
+change from zero to two in the common formation bracket.  \textbf{Right:}
+one-sided proper cap-area separation on G8, shown relative to the mean area at
+each sampled time.  The earliest positive gap is not claimed as quantitatively
+resolved; the growing separation on later slices is.}
+\label{fig:supp-formation}
+\end{figure}
+
+\subsection{Historical proper-area separation}
+
+Selected and confirmation proper cap areas agree within $0.0000881\%$; the
+individual G7/G8 proper areas agree within $0.0293\%$.  At first detection the
+outer-minus-inner gap is $0.02232\%$ on G7 and $0.01908\%$ on G8.  Thus both
+grids reproduce the ordering, while the small gap itself differs by about
+$16\%$ and is not treated as a precise near-creation observable.  Thereafter
+the inner area decreases and the outer area increases.  On G8 the gap grows to
+$0.5712\%$ at $t=0.004$, giving a progressively clearer proper-geometric
+separation.
+
+\subsection{Historical principal stability spectrum}
+
+Table~\ref{tab:supp-stability} gives the principal eigenvalues evaluated from
+the complete evolved slice within the $SO(3)$-symmetric physical-normal
+perturbation sector.  No nonsymmetric angular-harmonic spectrum is computed.
+The smallest eigenvalue-to-estimated-error margin is approximately 178.
+
+The operator is formed at 33, 49, 65, and 81 angular nodes using centered
+physical-normal perturbations of relative size $10^{-5}$; the 81-node matrix
+is repeated at $2\times10^{-5}$.  A manufactured flat-slice control with
+isotropic $K^i{}_j=0.8$ has the exact half-sphere radius $R=1.25$ and invariant
+Neumann eigenvalues $\lambda_0=-1.92$ and $\lambda_2=3.20$.  The calculation
+returns $-1.919593$ and $3.200406$, endpoint-elimination defects below
+$10^{-10}$, and a two-step matrix difference of $1.758\times10^{-6}$.
+Every physical 49/65/81 sequence retains one sign; the largest 65/81 change is
+$7.54\times10^{-5}$ and the largest step-induced eigenvalue change is
+$7.35\times10^{-4}$.
+
+\begin{table}[ht]
+\centering
+\caption{Historical pre-repair principal MOTS-stability eigenvalues; entries
+are G7/G8 and are not used to close the repaired result.}
+\label{tab:supp-stability}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+$t$ & inner branch & outer branch \\
+\midrule
+$0.000625$ & $-0.10391/-0.08791$ & $+0.10879/+0.09127$ \\
+$0.001$    & $-0.29251/-0.28800$ & $+0.33742/+0.33144$ \\
+$0.004$    & $-0.71802/-0.71689$ & $+1.06253/+1.06003$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The inner branch is therefore outward-unstable and the outer branch
+outward-stable in the linear MOTS sense.  This conclusion does not imply
+nonlinear basin stability.
+
+\section{Risk--criterion--outcome--consequence matrix}
+
+Table~\ref{tab:validation} collects the load-bearing validation results in the
+same risk--criterion--outcome--consequence order used to delimit the claim.
+
+\renewcommand{\arraystretch}{1.18}
+\small
+\begin{longtable}{@{}L{0.17\linewidth}L{0.19\linewidth}L{0.31\linewidth}L{0.25\linewidth}@{}}
+\caption{Scientific validation matrix.}\label{tab:validation}\\
+\toprule
+Risk & Criterion & Outcome & Consequence \\
+\midrule
+\endfirsthead
+\toprule
+Risk & Criterion & Outcome & Consequence \\
+\midrule
+\endhead
+Shared temporal-interpolation bias in the critical point & Repeat the complete G10 parent, continuation, and critical analysis at $\Delta t/2$ & The $\sim1.8\times10^{-7}$ brackets overlap; their midpoints differ by $9.17\times10^{-10}$; relative changes in area, $a$, and $b$ are below $10^{-4}$ & Strongly constrains the prescribed temporal concern without treating the midpoint shift as uncertainty; no quarter-step extension is triggered \\
+Systematic temporal-evolution error & Rebuild and evolve the G10 parent at $\Delta t/2$ under the same ordered physical gates & The independent half-step parent passes finite, signature, constraint, wall, axis, endpoint, and replay gates before reproducing the critical observables & Provides an indirect evolution check, not a standalone constraint-convergence study \\
+Insufficient spacetime-field resolution & Repeated G11 trajectories identical; every successive field/tensor discrepancy decreases; tensor ratios below $0.002$ & The repaired-parent field/tensor comparison passes on G9/G10/G11 & Addresses the field/tensor concern for the same repaired line \\
+Unverified direct G11 MOTS observables & Exactly two branches and 1\% adjacent-grid geometry transfer at a common time & At $t=0.0015$ the repaired-parent search admits exactly two opposite-stability branches on G9/G10/G11; maximum geometry transfer $1.76\times10^{-7}$ & Establishes direct three-grid formation geometry and stability on the repaired parent \\
+Spectral condition gate censors the fold & Keep the historical spectral detector distinct from the repaired BVP and augmented corrector & The $10^5$ gate is never applied to the repaired search or continuation; acceptance instead uses BVP residual, endpoint, domain, and cross-evaluator gates & Removes the proposed censoring mechanism; no condition-number trend is claimed because none was archived \\
+Boundary discretization changes the critical mode & Repeat angular resolution, Fr\'echet step, and the physical Robin reduction & The principal sign is stable over 49/65/81 nodes and step doubling; the manufactured free-boundary control passes & Supports the principal mode under the implemented seven-point boundary treatment; no alternative stencil width is claimed \\
+Pair anatomy does not identify a fold & Continue both branches through a principal zero and isolate the near-critical mode & The continuation encloses the zero on all grids; the near-critical mode is sign-definite and the next reduced-sector eigenvalue remains near $5.566$ & Supports a simple critical kernel rather than only a zero-to-two history \\
+Degenerate or tangential critical point & Nonzero, step-stable near-critical adjoint coefficients with consistent grid transfer & $a\simeq-20.765$ and $b\simeq2.808$ retain sign under step halving and across grids & Resolves temporal transversality and quadratic nondegeneracy under the stated discrete convention \\
+Normalization makes coefficient values ambiguous & State the discrete phase, norm, adjoint, and overlap conventions & $f_R$ has positive-real pivot and unit $\ell_\infty$ norm; the Euclidean left mode is scaled afterward to $f_L^*f_R=1$ & Makes the discrete values reproducible; finite nonzero rescaling cannot alter whether $a$ or $b$ vanishes \\
+Restricted computation misses a nonsymmetric principal instability & Use equivariance together with positivity and uniqueness of the elliptic principal mode & The normalized principal eigenfunction must be $SO(3)$-invariant & Captures the full principal eigenvalue and simple kernel; the nonprincipal nonsymmetric spectrum remains uncomputed \\
+Coordinate branch separation & Invariant area difference follows a one-half power with fit sensitivity & Spatial free fits give $p\simeq0.496$; half-step G10 gives $0.4981$; leave-one-out ranges stay $0.4919$--$0.4996$ & Supplies an invariant saddle-node scaling test without treating fit digits as uncertainty \\
+Three-grid agreement is nonmonotone & Report scatter and withhold a Richardson extrapolation & Relative spreads are $7.87\times10^{-6}$ in $t_*$ and $2.10\times10^{-6}$ in area; no real three-level order is defined & Supports finite-resolution consistency, not a continuum order or theorem \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Historical pre-repair studies}
+
+The studies in this section were performed on the superseded pre-repair G7/G8
+trajectory.  They are preserved as part of the research record but are not
+transferred as controls on the repaired G9/G10/G11 saddle-node.  The direct
+half-timestep and three-grid controls reported above are the load-bearing tests.
+
+Within that historical trajectory, the canonical and independent wall-owner evolution paths each pass the fixed
+$8/16/32$-step temporal sequence.  Two live-gauge variations---a slow/soft and
+a fast/strong variant---reproduce the formation bracket and persistent pair on
+both G7/G8 grids.  These historical studies are not used to assert repaired-line
+gauge robustness or foliation invariance.  The load-bearing G10 critical
+calculation instead passes the complete half-timestep comparison in
+Table~\ref{tab:supp-temporal}.
+
+Historically, pair existence persisted on R8, R10, and R12.  All five R8 amplitudes in
+$A=7.84$--$7.92$ start empty and later contain the pair; R12 anchors at
+$A=7.84$, $7.90$, and $7.92$ preserve late pair existence.  The sample is not
+converted into a derivative, critical amplitude, or open-basin theorem.
+
+The historical adverse-topology program includes opposite-side caps,
+closed-star-shaped candidates, and interval-spanning candidates.  No admitted
+closed-star-shaped or spanning competitor is found in 480 sealed trials.  The
+proper statement is bounded searched-class selection, not a global topology
+theorem.
+
+\section{Earlier G11 field closure and pre-formation search}
+
+Before the later formation and continuation calculations, the canonical
+spatial test compared the common-time G10--G11 discrepancy at
+$t=0.001$ with the previously sealed G9--G10 discrepancy.  Two full G11
+trajectories are required to agree bitwise.  Every load-bearing field sequence
+must decrease, no auxiliary RMS plateau may remain, and the relative physical
+metric-increment and ADM-$K$ differences must each be below $2\times10^{-3}$.
+This test acts on evolved spacetime fields and physical tensors.  By itself it
+did not recompute the MOTS observables on G11; that limitation is subsequently
+closed at $t/\ell=0.0015$ by the direct three-grid result above.
+The resulting field and tensor discrepancies are reported in
+Table~\ref{tab:supp-g11}.
+
+\begin{table}[ht]
+\centering
+\caption{Same-time repaired-parent spatial discrepancies.}
+\label{tab:supp-g11}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Quantity & G9--G10 & G10--G11 & change \\
+\midrule
+$q$ maximum & $6.06393\times10^{-7}$ & $4.06665\times10^{-7}$ & $-32.9\%$ \\
+$q$ RMS & $2.17493\times10^{-8}$ & $1.17272\times10^{-8}$ & $-46.1\%$ \\
+$v$ maximum & $1.21292\times10^{-3}$ & $8.12627\times10^{-4}$ & $-33.0\%$ \\
+$v$ RMS & $4.34884\times10^{-5}$ & $2.34387\times10^{-5}$ & $-46.1\%$ \\
+source maximum & $3.98955\times10^{-11}$ & $2.82353\times10^{-11}$ & $-29.2\%$ \\
+source RMS & $1.67857\times10^{-12}$ & $1.18785\times10^{-12}$ & $-29.2\%$ \\
+metric-increment absolute & $1.45619\times10^{-7}$ & $1.06995\times10^{-7}$ & $-26.5\%$ \\
+ADM-$K$ absolute & $6.18352\times10^{-5}$ & $4.63209\times10^{-5}$ & $-25.1\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The G10--G11 relative physical-tensor discrepancies are
+$2.82763\times10^{-4}$ for the metric increment and
+$2.32536\times10^{-4}$ for ADM $K$.  Both lie well below the fixed ceiling.
+The two G11 trajectories and complete traces are bitwise identical; all field
+and tensor sequences satisfy the prescribed closure criteria with no remaining
+auxiliary RMS plateau.
+
+\subsection{Direct surface-observable follow-up}
+\label{sec:repaired-preformation}
+
+The fixed independent BVP detector is applied to the repaired-parent
+G9/G10/G11 endpoints at the same time.  None of the 12 fixed seeds yields an
+admitted branch on any grid.  Table~\ref{tab:preformation-surface} reports the best
+near-surface on each grid.
+
+\begin{table}[ht]
+\centering
+\caption{Repaired-parent direct surface search at $t/\ell=0.001$.}
+\label{tab:preformation-surface}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+grid & local residual & primary residual & $\rho_{\rm axis}$ & $\rho_{\rm brane}$ \\
+\midrule
+G9  & $0.006015$ & $0.004050$ & $1.20448$ & $1.46931$ \\
+G10 & $0.006139$ & $0.004164$ & $1.20455$ & $1.47113$ \\
+G11 & $0.006092$ & $0.004118$ & $1.20436$ & $1.46632$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The independently evaluated expansion is positive throughout the
+two-cell-interior region of each best profile.  The common magnitude and shape
+across the three grids do not resemble a worsening-resolution instability.
+No comparison with the superseded G7/G8 trajectory is needed for the central
+inference.  The later same-parent continuation establishes that these three profiles lie on
+the pre-formation side: the critical time is near $0.00117254$, after the
+$t/\ell=0.001$ search and before the accepted pair at $t/\ell=0.0015$.
+
+An earlier comparison is retained as a technical negative rather than silently
+discarded.  It compared canonical acceleration against a stored zero step from
+an experimental second wall-owner mode, so it was not a valid canonical
+same-mode spatial comparison.  The archived experimental state differs from
+the canonical state at 1,196 values, with maximum absolute difference
+$3.981706\times10^{-4}$ and RMS $7.7359\times10^{-7}$.  The corrected
+same-mode comparison above supplies the load-bearing spatial result.
+
+\section{Negative, failed, and incomplete studies}
+
+Scientifically material negative and incomplete studies are preserved with
+their consequences:
+\begin{itemize}
+\item The initial no-root result is strong numerical evidence but not a formal
+interval proof.  Consequently, the article states only bounded search
+nonacceptance.
+\item Formation times from the historical pre-repair larger-domain parents are
+not transferred to the repaired line or used to infer a universal formation
+threshold.
+\item Long-time and transport-oriented diagnostics do not qualify a late-time
+production claim.  The article ends with the short-time paired-MOTS result.
+\item Width and boundary variants that do not satisfy their own prerequisite
+or identity gates are not counted as adverse scientific outcomes.
+\item Arithmetic-precision and parent-qualification studies that preceded the
+canonical evolution establish their own bounded numerical conclusions; they do
+not retroactively convert this result into an event-horizon or continuum
+claim.
+\end{itemize}
+
+\section{Reproducibility and archival mapping}
+
+The principal machine-readable aggregation is stored under the project
+archive identifier \texttt{Protocol 230} (archive-only saddle-node
+finalization, 24 August 2026) in \texttt{protocol230\_result.json}.  Its
+SHA-256 file hash is
+\begin{quote}
+\nolinkurl{a54782417444dfe101b291a2b6d2594e5eb2e16f5774eab1500cf80328598156}.
+\end{quote}
+It binds the immutable Protocol 229 records on G9, G10, and G11.  Their
+abbreviated SHA-256 hashes are, respectively,
+\texttt{a9ef9824...28b4e}, \texttt{4b3cb413...3dab}, and
+\texttt{1884b005...4f40}.  The preceding direct formation closure is stored
+as \texttt{Protocol 228}, whose result file hash is
+\texttt{d82000ec...3f97}.  Protocol 226 remains the earlier field/tensor
+closure record rather than the primary scientific result.
+The existing-data precision and fit audit is stored as \texttt{Protocol 231};
+its result SHA-256 is
+\begin{quote}
+\nolinkurl{7e2f0f30ba6e0722e3f04c637557d97e837581ea7a6a2686ef6e520c21565b18}.
+\end{quote}
+The independent G10 half-timestep evolution and continuation are stored as
+\texttt{Protocol 232}.  Its result JSON and numerical archive have SHA-256
+hashes
+\begin{quote}
+\nolinkurl{16eea6a208b7db8be4a3cd090778e98b18f905f00ca32cba9d534e4cd25ea522},\\
+\nolinkurl{98e53d892e4732398dea40b623517b43359f4e7b7f1d735286bd388797bbd999}.
+\end{quote}
+The archival package binds source manifests, immutable inputs, environment
+receipts, prospective gate definitions, checkpoints, repeat traces, and final
+artifacts.  The article and this supplement report scientific outcomes; the
+archive provides machine-level replay evidence.  The complete citable package
+is archived at Zenodo under
+\href{https://doi.org/10.5281/zenodo.22085055}{doi:10.5281/zenodo.22085055}.
+
+\section{Boundary of inference}
+
+The combined evidence does not establish:
+\begin{itemize}
+\item the absence of all marginal surfaces outside the bounded search classes;
+\item a measured continuum convergence order or extrapolated continuum value;
+\item a nonprincipal spectral-gap statement outside the $SO(3)$-symmetric
+perturbation sector;
+\item nonlinear stability or a complete basin of attraction;
+\item an event horizon, common horizon, throat, parent/child universe, or
+topology change;
+\item a universal formation time or critical-amplitude law; or
+\item late-time production evolution.
+\end{itemize}
+These questions require separate, prospectively defined studies.  In
+particular, global event-horizon reconstruction would constitute a distinct
+paper rather than an appendix to the present quasi-local claim.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

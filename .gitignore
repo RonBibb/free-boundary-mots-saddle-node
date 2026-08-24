@@ -1,0 +1,42 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Local editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
+
+# LaTeX intermediates
+article/build/
+article/tmp/
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# Numerical outputs are archived separately, not version-controlled here
+results/
+data/
+candidate-output/
+checkpoints/
+*.npz
+*.npy
+*.h5
+*.hdf5
+
+# Local frozen records and research notes may contain machine-specific paths
+notes/
+protocols/*/authority/
+protocol*_freeze*.json
+protocol*_runtime_environment_contract.json
