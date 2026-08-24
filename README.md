@@ -11,7 +11,9 @@ Goldberger--Wise-stabilized braneworld.
 The repository is deliberately **code-only with respect to scientific
 outputs**. Numerical candidate outputs, checkpoints, and large result arrays
 are not committed to Git. The citable archival record is
-[Zenodo 10.5281/zenodo.22087164](https://doi.org/10.5281/zenodo.22087164).
+[Zenodo version 10.5281/zenodo.22087164](https://doi.org/10.5281/zenodo.22087164).
+The complete version series is available through the
+[concept DOI 10.5281/zenodo.22085054](https://doi.org/10.5281/zenodo.22085054).
 
 ## Repository contents
 
