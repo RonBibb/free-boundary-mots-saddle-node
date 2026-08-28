@@ -2,6 +2,8 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22148554.svg)](https://doi.org/10.5281/zenodo.22148554)
 
+[Frozen source snapshot: `zenodo-22148554`](https://github.com/RonBibb/free-boundary-mots-saddle-node/tree/zenodo-22148554)
+
 This repository contains the complete Python source and test surface, frozen
 protocol implementations, and publication files for the accompanying paper.
 The calculation resolves a brane-terminating free-boundary marginally outer
