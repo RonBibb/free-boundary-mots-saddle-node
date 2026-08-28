@@ -1,13 +1,7 @@
-\documentclass[
-  aps,
-  prd,
-  reprint,
-  amsmath,
-  amssymb,
-  nofootinbib,
-  longbibliography
-]{revtex4-2}
+\documentclass[11pt]{article}
 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
 \usepackage{mathtools}
 \usepackage{booktabs}
 \usepackage{graphicx}
@@ -20,10 +14,10 @@
   linkcolor=blue!55!black,
   citecolor=blue!55!black,
   urlcolor=blue!55!black,
-  pdftitle={Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node in Dynamical Five-Dimensional Gravity},
+  pdftitle={From a Free-Boundary MOTS Saddle-Node to a Spacelike Marginal Tube in Dynamical Five-Dimensional Gravity},
   pdfauthor={Ronald Bibb},
-  pdfsubject={Critical structure of a free-boundary marginally outer trapped surface bifurcation},
-  pdfkeywords={braneworld; marginally outer trapped surface; free boundary; saddle-node bifurcation; numerical relativity; Goldberger-Wise stabilization}
+  pdfsubject={Critical formation and post-fold development of a free-boundary marginally outer trapped tube},
+  pdfkeywords={braneworld; marginally outer trapped surface; free boundary; saddle-node bifurcation; dynamical horizon; numerical relativity; Goldberger-Wise stabilization}
 }
 \newcommand{\MOTS}{\mathrm{MOTS}}
 \newcommand{\AdS}{\mathrm{AdS}}
@@ -32,43 +26,44 @@
 
 \begin{document}
 
-\title{Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node
+\title{From a Free-Boundary MOTS Saddle-Node to a Spacelike Marginal Tube
 in Dynamical Five-Dimensional Gravity}
-\author{Ronald Bibb}
-\email{ronbibb@gmail.com}
-\affiliation{Independent Researcher, Lilburn, Georgia, USA}
-\date{August 24, 2026}
+\author{Ronald Bibb\\
+\small Independent Researcher, Lilburn, Georgia, USA\\
+\small \texttt{ronbibb@gmail.com}}
+\date{August 28, 2026}
+
+\maketitle
 
 \begin{abstract}
-The physical boundary of a marginally outer trapped surface (MOTS) changes the
-domain of its stability operator and the corresponding discrete adjoint
-projection.  We ask whether the fold hypotheses are actually realized when
-the contact condition is incorporated into the MOTS boundary-value map and the
-ambient geometry is dynamically evolved.  We answer this question for a
-brane-terminating MOTS pair in the
-$SO(3)$-symmetric sector of five-dimensional Einstein--anti-de Sitter gravity
-on a Goldberger--Wise-stabilized compact interval.  An independently
-constructed parent sequence contains no accepted upper-brane-capped MOTS at
+Pair creation is a local statement about marginally outer trapped surfaces
+(MOTSs); its physical significance depends on what the stable branch becomes.
+We resolve both the critical creation and the subsequent geometric development
+of brane-terminating MOTSs in the $SO(3)$-symmetric sector of a dynamically
+evolved, Goldberger--Wise-stabilized five-dimensional spacetime.  An
+independently constructed parent sequence contains no accepted capped MOTS at
 $t/\ell=0.001$ and exactly two at $t/\ell=0.0015$ on three successive
-spacetime grids.  Pseudo-arclength continuation of the coupled surface--time
-problem locates a common critical time
+spacetime grids.  Pseudo-arclength continuation locates a common critical time
 $t_*/\ell\simeq1.17254\times10^{-3}$ in the chosen foliation.  The principal
-stability eigenvalue crosses zero with a real, sign-definite mode, while
-endpoint-eliminated discrete adjoint projections give nonzero near-critical
-transversality and quadratic coefficients under a fully specified discrete
-normalization.  The invariant
-one-sided proper-area separation follows the expected square-root law.  An
-independent G10 half-timestep evolution repeats the parent and continuation,
-yields an overlapping critical-time bracket, and gives a free exponent
-$p\simeq0.498$.  Together these tests verify the local fold hypotheses and
-resulting saddle-node structure for a dynamically generated free-boundary
-MOTS problem rather than inferring
-it only from pair anatomy.  The new result is the boundary-sensitive numerical
-realization, not the saddle-node mechanism itself.
-The claim is finite-resolution and quasi-local: it is not a continuum theorem,
-event-horizon reconstruction, or phase diagram.
+stability eigenvalue crosses zero through a real sign-definite mode; discrete
+adjoint projections give nonzero transversality and quadratic coefficients;
+and the invariant one-sided proper-area separation follows the predicted
+square-root law.  An independent G10 half-timestep evolution reproduces the
+critical bracket and gives a free exponent $p\simeq0.498$.  We then follow the
+stable outer branch over nine evenly spaced matched leaves spanning
+$0.00121875\leq t/\ell\leq0.00146875$, with physical leaf spacing
+$3.125\times10^{-5}\ell$.  It forms a resolved spacelike
+marginal tube with negative inward expansion, strictly increasing area,
+positive principal stability, and orthogonal brane contact.  Its geometry and
+causal signature transfer across G9/G10/G11 and survive the half-timestep
+evolution.  A brane-inclusive reflected quasi-local charge ledger closes over
+a finite segment with a worst charge--flux discrepancy of $0.302\%$, robust
+under three spatial stencils.  The combined result traces a boundary-created
+stable branch from its saddle-node through a finite-resolution
+free-boundary dynamical-horizon segment.  It remains quasi-local and
+foliation-dependent and is neither a continuum theorem nor an event-horizon,
+global-topology, or source-ownership reconstruction.
 \end{abstract}
-\maketitle
 
 \section{Introduction}
 
@@ -110,43 +105,42 @@ transversality and quadratic normal-form coefficients tested here.
 Recent bifurcation analysis identifies generic pair creation as a saddle-node
 mechanism and distinguishes it from symmetry-supported pitchfork or
 transcritical cases \cite{BoothCoxOkpala2026,BoothCoxMargalefBentabol2024}.
-Accordingly, this paper does not claim the fold mechanism as new.  Its question
-is more precise than whether two surfaces appear in one braneworld evolution:
-are the fold hypotheses actually realized when the marginal surface has a
-physical boundary, the boundary condition enters the operator domain, and the
-ambient geometry is supplied by a nonlinear evolution rather than a prescribed
-metric family?  We answer this question in the concrete case of
-brane-terminating free-boundary MOTSs in a compact, explicitly stabilized
-braneworld.
+The fold mechanism itself is therefore not new.  The first question here is
+whether its hypotheses are realized when the marginal surface has a physical
+boundary, the contact condition enters the operator domain, and the ambient
+geometry is supplied by a nonlinear evolution rather than a prescribed metric
+family.  The second is physical rather than classificatory: if a stable outer
+branch is created, does it persist as a coherent marginal tube with the sign,
+causal character, area evolution, and balance behavior expected of a
+dynamical horizon?  A spacelike hypersurface foliated by marginal leaves with
+negative inward expansion is the quasi-local dynamical-horizon structure that
+captures black-hole growth without reconstructing an event horizon
+\cite{AshtekarKrishnan2002,AshtekarKrishnan2003}.
 
-The new result is numerical verification of the fold hypotheses across three
-spatial grids and in an independent half-timestep evolution in a substantially
-different operator problem.  The
-spacetime is generated by a nonlinear five-dimensional initial-boundary-value
-evolution rather than prescribed as an exact metric family; the MOTSs have a
-physical boundary; the stability operator is non-self-adjoint; and its domain
-contains the Robin condition induced by the brane geometry.  Existing
-closed-MOTS bifurcation examples do not contain these features, while existing
-free-boundary stability and rigidity results do not guarantee dynamical pair
-creation.  Thus we verify the fold hypotheses in a setting where their
-numerical realization was unresolved, without proposing a new universal
-bifurcation class.
+We answer both questions for brane-terminating free-boundary MOTSs in a
+compact, explicitly stabilized braneworld.  The spacetime is generated by a
+nonlinear five-dimensional initial-boundary-value evolution; the stability
+operator is non-self-adjoint; and its domain contains the Robin condition
+induced by the brane geometry.  Existing closed-MOTS bifurcation examples do
+not contain these features, while existing free-boundary stability and
+rigidity results do not guarantee dynamical pair creation or the post-fold
+development of a spacelike tube.  The contribution is thus neither a new
+universal bifurcation class nor pair detection in another metric.  It is a
+controlled numerical connection between a boundary-sensitive fold and the
+subsequent marginal geometry selected by its stable branch.
 
-We answer that question by combining direct three-grid formation with
-pseudo-arclength continuation in surface profile and time.  The two branches
-coalesce at a grid-consistent critical surface, their principal eigenvalue is
-bracketed through zero, an isolated near-critical principal mode is separated
-from the remainder of the reduced-sector spectrum, the discrete-adjoint
-transversality and quadratic coefficients are nonzero, and the invariant area separation has
-the expected square-root exponent.  An independent G10 half-timestep evolution
-repeats the complete parent, continuation, and critical analysis, while
-operator-resolution, boundary, residual, and replay controls test the principal
-numerical alternatives.  The central claim is a finite-resolution numerical demonstration,
-in an $SO(3)$-symmetric free-boundary problem, of a dynamical MOTS saddle-node.
-The symmetry argument below captures the full principal eigenvalue, but the
-reported nonprincipal spectral gap remains restricted to the symmetric
-sector.  The calculation does not identify a global horizon or establish a
-continuum bifurcation theorem.
+Direct three-grid formation, pseudo-arclength continuation, critical-mode and
+discrete-adjoint tests, invariant square-root scaling, and an independent G10
+half-timestep evolution establish the local saddle-node at finite resolution.
+The stable outer branch is then followed over a fixed post-fold interval.
+Negative inward expansion, increasing area, positive principal stability, and
+a uniformly spacelike tube tangent persist under G9/G10/G11 spatial transfer
+and the half-timestep control.  A brane-inclusive local and finite-segment
+quasi-local balance supplies an independent geometric check.  Together these
+results support a finite-resolution free-boundary dynamical-horizon segment in
+the imposed $SO(3)$-symmetric sector and chosen foliation.  The analysis does
+not establish an event horizon, global topology, source ownership, the
+nonsymmetric nonprincipal spectrum, or a continuum theorem.
 
 Further definitions, prespecified acceptance criteria, extended numerical
 controls, negative studies, and the reproducibility mapping are given in the
@@ -206,7 +200,7 @@ historical record in the supplement used $R_{\max}/\ell=8$.  Thus the quoted
 time is $t/\ell$.  The background parameters and primary discretizations are
 listed in Table~\ref{tab:model}.
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Dimensionless model and primary numerical parameters.}
 \label{tab:model}
@@ -224,7 +218,7 @@ repaired evolution step & $\Delta t/\ell=3.125\times10^{-5}$ \\
 independent G10 temporal check & $\Delta t/\ell=1.5625\times10^{-5}$ \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 Writing $y=\log z$ and $d=1$, the collapse field is initialized as
 \begin{equation}
@@ -409,6 +403,43 @@ and~\eqref{eq:invariant-fold-scaling} state the local numerical hypothesis
 being tested; they are not asserted here as a new continuum theorem
 \cite{Kuznetsov2004,BoothCoxOkpala2026}.
 
+\subsection{Post-fold marginal-tube observables}
+
+Let $u^a$ be the future unit normal to a spatial slice, $s^a$ the outward
+unit normal to a marginal leaf, and
+$\ell^a=(u^a+s^a)/\sqrt2$, $n^a=(u^a-s^a)/\sqrt2$.  The normal projection of
+the positive-time tube generator is written
+\begin{equation}
+X^a=A\ell^a-Bn^a,
+\qquad X^2=2AB.
+\label{eq:tube-generator}
+\end{equation}
+A future-outward spacelike segment requires $A>0$ and $B>0$, not merely
+$X^2>0$.  On a marginal leaf $\theta_{(\ell)}=0$, while
+$\theta_{(n)}<0$ supplies the future trapped sign.  If the full deformation is
+$\mathcal X^a=X^a+V^a$, with $V^a$ tangent to the leaf, orthogonal brane
+contact and endpoint motion within the brane give
+$V\mathbin\cdot\nu=0$.  The one-sided area law is therefore
+\begin{equation}
+\frac{\dd\mathcal A}{\dd\lambda}
+=-\int_{\mathcal S}B\theta_{(n)}\,\dd A>0.
+\label{eq:tube-area-law}
+\end{equation}
+
+The physical cap is open, so its intrinsic-curvature balance is evaluated on
+the reflected three-leaf.  The resulting AdS-subtracted quasi-local charge
+candidate $Q_{\rm AdS}$ contains a coupled cap--brane seam contribution fixed
+by the Israel geometry.  The finite-segment test has the form
+\begin{equation}
+Q_{\rm AdS}(\lambda_2)-Q_{\rm AdS}(\lambda_1)
+=\int_{\lambda_1}^{\lambda_2}F_{\rm bulk+brane}\,\dd\lambda.
+\label{eq:tube-balance}
+\end{equation}
+This is a quasi-local balance on the tested tube segment, not a global mass or
+source-ownership ledger.  The boundary variation, charge convention, and
+separate spatial and temporal tests are given in the Supplemental Material
+\cite{SupplementalMaterial}.
+
 \section{Numerical strategy}
 
 The coupled Einstein--scalar equations are evolved in a regular
@@ -521,7 +552,7 @@ $3.94\times10^{-5}$ for the principal eigenvalue.  The negative inner and
 positive outer eigenvalues therefore close directly across three spacetime
 grids, rather than being inferred from convergence of the underlying fields.
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Direct three-grid pair geometry and stability at $t/\ell=0.0015$.
 $\mathcal A$ is the one-sided proper cap area.}
@@ -535,7 +566,7 @@ G10 & $40.67520099$ & $-0.25895908$ & $40.72845823$ & $+0.29348687$ \\
 G11 & $40.67519977$ & $-0.25896247$ & $40.72845818$ & $+0.29348984$ \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Continuation to the critical surface}
 
@@ -584,7 +615,7 @@ stability, coefficient, and area-scaling calculations.  Table~\ref{tab:temporal-
 shows the direct comparison.  All criteria were fixed before the half-step
 result was examined.
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{G10 half-timestep comparison.  The $t_*$ entries are bracket
 midpoints; their difference is not an uncertainty estimate.  Differences for
@@ -604,7 +635,7 @@ $R^2$ for squared-area fit & $0.9999804$ & $0.9999951$ & --- \\
 zero-bracket width & $1.72\times10^{-7}$ & $1.79\times10^{-7}$ & --- \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 The full- and half-step critical-time brackets overlap.  Their midpoint shift
 is $9.17\times10^{-10}$, while the brackets themselves remain approximately
@@ -636,7 +667,7 @@ reduced-sector spectral gap.  The principal right mode is real and
 sign-definite.  The unit left--right overlap is imposed by the normalization
 above and is not counted as independent evidence.
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Near-critical discrete normal-form observables.  Coefficients are
 evaluated at the smaller-magnitude endpoint of the final zero bracket; the
@@ -653,7 +684,7 @@ square-root exponent $p$ & $0.4959$ & $0.4960$ & $0.4960$ \\
 $R^2$ for $(\Delta\mathcal A)^2$ fit & $0.9999801$ & $0.9999804$ & $0.9999803$ \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 The centered step-halving evaluations of Eq.~\eqref{eq:normal-form-coefficients}
 retain $a<0$ and $b>0$ on every grid.
@@ -685,19 +716,102 @@ discrete-adjoint, and
 invariant-geometry tests therefore identify the local saddle-node structure
 through mutually distinct observables.
 
+\subsection{Post-fold development of the stable branch}
+
+The fold calculation alone does not show that neighboring outer MOTSs belong
+to a physically coherent tube.  We therefore follow the accepted stable
+branch over the fixed interval
+$0.00121875\leq t/\ell\leq0.00146875$.  At each time the surface profile,
+principal stability eigenvalue, both null expansions, and the normal
+projection of the tube generator are reconstructed independently.  Backward,
+centered, and forward velocity paths are retained so that a positive centered
+norm is accepted as spacelike only when it is separated from the one-sided
+spread.  The resulting tests are summarized in
+Table~\ref{tab:tube-controls}.  They directly evaluate the oriented generator
+and area law in Eqs.~\eqref{eq:tube-generator}--\eqref{eq:tube-area-law} and
+the finite-segment balance in Eq.~\eqref{eq:tube-balance}.
+
+\begin{table}[t]
+\centering
+\caption{Post-fold marginal-tube controls.  Relative differences are maxima
+over the stated comparison unless otherwise noted.}
+\label{tab:tube-controls}
+\begin{tabular}{@{}p{0.30\linewidth}p{0.25\linewidth}p{0.35\linewidth}@{}}
+\toprule
+risk & criterion & outcome \\
+\midrule
+grid-dependent tube & G9/G10/G11 geometry $<1\%$ & maximum geometry difference $1.24\times10^{-6}$; stability signs agree \\
+unresolved causal character & every surface node spacelike & all 501 nodes on every tested interior leaf resolve spacelike \\
+temporal bias & full/half G10 difference $<10^{-2}$ & maximum causal-signature difference $1.733\times10^{-8}$; minimum resolution margin $54.01$ \\
+incorrect future branch & $\theta_{(n)}<0$, $\dot{\mathcal A}>0$, $\lambda_0>0$ & all three signs persist in both timestep lanes \\
+incomplete flux ledger & charge--flux discrepancy $<1\%$ & maximum $0.302\%$; brane-endpoint subtotal $59.44\%$ of integrated flux \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/tube-evolution.pdf}
+\caption{Post-fold evolution of the stable outer branch.  The independently
+evolved G10 full- and half-timestep lanes coincide over the nine matched
+leaves; open G9 and G11 markers show the common later spatial-transfer
+samples.  The one-sided area increases, the least-negative inward expansion
+remains below zero, and the principal eigenvalue remains positive.  The
+causal-resolution margin is
+$\min_{\theta}(|\Xi_{\rm c}|-\delta\Xi)$, where $\delta\Xi$ is the maximum
+one-sided stencil spread; it remains positive at every one of 501 nodes and
+has minimum $54.01$ in the fixed generator normalization.}
+\label{fig:tube-evolution}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/tube-balance.pdf}
+\caption{Brane-inclusive balance on the fixed segment
+$0.001375\leq t/\ell\leq0.00146875$.  (a) The charge change and integrated
+flux lie close to the exact-closure diagonal for G9/G10/G11 and stencil
+widths 5, 7, and 9.  (b) Every relative charge--flux discrepancy remains
+below the prospective $1\%$ ceiling.  (c) The coupled brane-endpoint subtotal
+supplies approximately $59.44\%$ of the integrated flux.  This is a local
+ledger decomposition, not a global source attribution.}
+\label{fig:tube-balance}
+\end{figure}
+
+Figure~\ref{fig:tube-evolution} makes the nine-leaf sampling and its temporal
+and spatial comparisons explicit.  The largest stored inward expansion is approximately
+$-2.8587\times10^{-2}$, the marginality defect is at most
+$1.85\times10^{-6}$ in the interior, and the orthogonal-contact residual is
+at most $1.10\times10^{-18}$.  The integrated balance is tested on the fixed
+subsegment $0.001375\leq t/\ell\leq0.00146875$.  Its worst adjacent-grid
+transfer metric is $7.58\times10^{-5}$ and its worst within-grid spatial-stencil
+metric is $3.54\times10^{-5}$.  The brane terms are nonzero and are retained
+in the ledger rather than absorbed into the residual.  As shown in
+Fig.~\ref{fig:tube-balance}, their subtotal supplies approximately $59.44\%$
+of the integrated flux on every grid.  The seam coefficient $c=W_s/W$ is fixed
+from the Israel boundary data and the coupled seam law is derived before the
+charge--flux residual is examined; neither is fitted to obtain closure.
+
+These outcomes address distinct alternatives: surface persistence alone could
+hide a timelike or unresolved tube; area increase alone could be a
+finite-difference artifact; and a small bulk-only residual could omit the
+moving cap--brane joint.  Their joint closure supports the finite-resolution
+interpretation that the fold-selected stable branch develops into a spacelike
+free-boundary marginal, or dynamical-horizon, segment.  It does not turn the
+segment into an event horizon or a global conserved-charge construction.
+Extended values and the boundary-coupled balance derivation are reported in
+the Supplemental Material \cite{SupplementalMaterial}.
+
 \section{Interpretation}
 
-The result is a boundary-sensitive test of the local MOTS bifurcation
+The first result is a boundary-sensitive test of the local MOTS bifurcation
 framework, not simply another observation of pair formation.  The physical
 contact condition is part of the nonlinear map in
 Eq.~\eqref{eq:free-boundary-map}; its linearization fixes the Robin domain,
 the endpoint-eliminated discrete kernel, and the corresponding discrete
-adjoint projection.  The
-branches are
-connected by pseudo-arclength continuation; an isolated near-critical
-principal mode accompanies the bracketed zero crossing; both
-discrete adjoint nondegeneracy projections are nonzero;
-and an invariant geometric separation has the expected one-half exponent.
+adjoint projection.  The branches are connected by pseudo-arclength
+continuation; an isolated near-critical principal mode accompanies the
+bracketed zero crossing; both discrete-adjoint nondegeneracy projections are
+nonzero; and an invariant geometric separation has the expected one-half exponent.
 None of these ingredients is inferred from the branch count alone.  Their
 agreement across three spacetime grids and the independent half-timestep G10
 comparison support a numerical free-boundary MOTS saddle-node at finite
@@ -713,14 +827,25 @@ every free-boundary MOTS problem has the same unfolding.  This single
 realization establishes non-obstruction in the tested surface class, not
 genericity across free-boundary MOTS problems.
 
-The concrete physical significance lies in the surface class and arena.
-The MOTSs terminate orthogonally on a brane inside an explicitly stabilized
-compact interval.  They are not imposed as static horizons and are not
-continued from a pre-existing connected black string.  Their appearance is
-consistent with the local paired-MOTS mechanism under the physical Robin
-boundary condition in the tested nonlinear evolution.  The saddle-node mechanism itself
-is established theory; the contribution here is resolving its critical
-structure in a dynamical brane-terminating problem.
+The second result supplies the physical continuation.  The stable branch does
+not merely recur on adjacent slices: the resolved normal generator is
+future-outward and spacelike, the inward expansion is negative, the area
+increases, and the principal eigenvalue remains positive.  The
+brane-inclusive finite-segment balance then connects the changing quasi-local
+charge to an explicit bulk-plus-boundary flux ledger.  Spatial transfer,
+stencil variation, and an independently evolved half-timestep parent constrain
+different numerical explanations for that combined behavior.  In this sense
+the fold selects a stable branch that becomes a finite dynamical-horizon
+segment rather than an isolated collection of roots.
+
+The concrete significance lies in both the surface class and the dynamical
+sequence.  The MOTSs terminate orthogonally on a brane inside an explicitly
+stabilized compact interval.  They are neither imposed as static horizons nor
+continued from a pre-existing connected black string.  The established
+saddle-node mechanism is realized with a physical Robin boundary and is then
+followed into a spatially and temporally controlled free-boundary marginal
+tube.  That connected sequence, rather than the abstract fold mechanism, is
+the principal result.
 
 \section{Limitations and boundary of inference}
 
@@ -736,8 +861,12 @@ discrete normal-form evaluation remain tied to the symmetric branch and stated
 discretization.  They are numerical results, not analytic Fredholm bounds on
 the uncomputed nonsymmetric nonprincipal spectrum.  Separately solved
 larger-domain parents do not define the same universal formation datum.
-Finally, no event horizon, common horizon, global topology change, or
-nonlinear stability theorem follows from the evidence.
+The marginal-tube claim is restricted to nine matched leaves over the tested
+finite interval, the same symmetry sector, and the chosen foliation.  Its
+reflected quasi-local charge is a boundary-aware finite-segment diagnostic,
+not a global mass, source-ownership, or inter-sector transfer ledger.
+Finally, no event horizon, future-complete causal boundary, common horizon,
+global topology change, or nonlinear stability theorem follows from the evidence.
 The archived negative, failed, and incomplete studies underlying these bounds
 are summarized in the Supplemental Material \cite{SupplementalMaterial}.
 
@@ -746,30 +875,30 @@ a different observable or a different global construction.
 
 \section{Conclusion}
 
-We have numerically verified the local fold hypotheses for a dynamical
-free-boundary MOTS saddle-node.  The physical contact condition enters the
-boundary-value map and the endpoint-eliminated discrete adjoint projection,
-while the ambient geometry is
-generated by a nonlinear five-dimensional evolution.  In the concrete
-Goldberger--Wise-stabilized braneworld realization, an independently
-constructed parent sequence evolves from no accepted capped surface to two
-opposite-stability branches on G9, G10, and G11.  Pseudo-arclength continuation
-connects them through a grid-consistent critical surface.  The isolated
-near-critical principal mode and bracketed zero crossing are consistent with
-a simple critical kernel; the discrete adjoint
-transversality and quadratic coefficients are nonzero under the stated
-discrete normalization, and the invariant proper-area separation follows a
-near-one-half law.  An independent G10 half-timestep evolution strongly
-constrains the shared temporal-discretization concern.  The repaired-line residual,
-operator-resolution, physical-boundary, and deterministic-replay controls
-support the formation and critical-structure result.  The calculation therefore advances from
-observing post-formation branch anatomy to numerically resolving the local
-critical structure of a dynamical free-boundary MOTS problem and provides a
-reusable numerical test of the boundary-sensitive normal form.  A separate
-future study may use these leaves to investigate a marginal tube or other
-global horizon observables; none is claimed here.
+We have followed a dynamically selected free-boundary marginal geometry from
+its local creation to a finite spacelike tube segment.  The physical contact
+condition enters the nonlinear MOTS map, its Robin domain, and the
+endpoint-eliminated discrete adjoint projection.  Across G9, G10, and G11,
+the evolved parent changes from no accepted capped surface to two
+opposite-stability branches.  Pseudo-arclength continuation joins those
+branches at a grid-consistent critical surface; the principal mode crosses
+zero; both discrete-adjoint nondegeneracy coefficients are nonzero; and the
+invariant area separation follows the expected near-one-half law.  The
+independent half-timestep parent reproduces this critical structure.
 
-\begin{acknowledgments}
+The stable outer branch then develops into a future-outward spacelike marginal
+tube with negative inward expansion, increasing area, positive principal
+stability, orthogonal contact, and a brane-inclusive finite-segment balance.
+Those properties survive the same three-grid spatial transfer and the
+independent G10 half-timestep evolution.  The combined result therefore moves
+beyond pair anatomy: it numerically resolves the boundary-sensitive fold and
+shows what its stable branch becomes over a controlled post-fold interval.
+This supplies a reusable route from free-boundary MOTS bifurcation to local
+dynamical-horizon geometry in an evolved higher-dimensional spacetime.  The
+result remains finite resolution and quasi-local; no event horizon, global
+topology, source ownership, or continuum theorem is inferred.
+
+\section*{Acknowledgments}
 
 I owe a deeply personal debt of gratitude to Chunshan Lin, whose paper
 \cite{Lin2026} was the intellectual spark for this project.  Although the
@@ -782,23 +911,23 @@ OpenAI ChatGPT 5.3 and OpenAI Codex (GPT-5 series, accessed August 2026) also
 assisted with literature organization and manuscript drafting and revision.
 The author checked the cited sources and assumes full responsibility for the
 accuracy, interpretation, and final text.
-\end{acknowledgments}
 
 \section*{Data Availability}
 
-Machine-readable results, frozen protocols, source manifests, tests, and the
-scripts supporting the figures are archived in the published Zenodo version
-identified by
-\href{https://doi.org/10.5281/zenodo.22087164}{doi:10.5281/zenodo.22087164}.
+Machine-readable result records and frozen protocol manifests are archived in
+the Zenodo version identified by
+\href{https://doi.org/10.5281/zenodo.22148554}{doi:10.5281/zenodo.22148554}.
 The complete version series is identified by the concept DOI
 \href{https://doi.org/10.5281/zenodo.22085054}{doi:10.5281/zenodo.22085054}.
-The version-controlled Python source, frozen protocol implementations, and
-test suite are publicly available in the
-\href{https://github.com/RonBibb/free-boundary-mots-saddle-node}{GitHub repository}.
-The Zenodo record is the citable archival authority for the scientific
-results.
+The version-controlled source code, tests, frozen protocol implementations,
+and figure-generation scripts are publicly available through the
+\href{https://github.com/RonBibb/free-boundary-mots-saddle-node}{GitHub repository}
+linked from that Zenodo record.  Zenodo is the citable authority for the
+saddle-node and marginal-tube result records; GitHub is the public code
+repository.
 
-\bibliographystyle{apsrev4-2}
+\small
+\bibliographystyle{unsrt}
 \bibliography{references}
 
 \end{document}

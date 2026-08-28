@@ -14,10 +14,10 @@
   linkcolor=blue!55!black,
   citecolor=blue!55!black,
   urlcolor=blue!55!black,
-  pdftitle={Supplemental Material: Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node in Dynamical Five-Dimensional Gravity},
+  pdftitle={Supplemental Material: From a Free-Boundary MOTS Saddle-Node to a Spacelike Marginal Tube in Dynamical Five-Dimensional Gravity},
   pdfauthor={Ronald Bibb},
-  pdfsubject={Validation and reproducibility record for a free-boundary MOTS saddle-node},
-  pdfkeywords={braneworld; marginally outer trapped surface; free boundary; saddle-node bifurcation; numerical relativity; supplemental material}
+  pdfsubject={Validation and reproducibility record for a free-boundary MOTS saddle-node and spacelike marginal tube},
+  pdfkeywords={braneworld; marginally outer trapped surface; free boundary; saddle-node bifurcation; dynamical horizon; numerical relativity; supplemental material}
 }
 \setlist{nosep}
 \newcommand{\MOTS}{\mathrm{MOTS}}
@@ -28,43 +28,47 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \title{Supplemental Material for\\
-``Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node\\
+``From a Free-Boundary MOTS Saddle-Node to a Spacelike Marginal Tube\\
 in Dynamical Five-Dimensional Gravity''}
 \author{Ronald Bibb\\
 \small Independent Researcher, Lilburn, Georgia, USA\\
 \small Correspondence: \texttt{ronbibb@gmail.com}}
-\date{24 August 2026}
+\date{28 August 2026}
 
 \begin{document}
 \maketitle
 
 \section{Purpose and evidentiary scope}
 
-This supplement gives the definitions, acceptance criteria, extended numerical
-results, negative studies, and reproducibility structure underlying the main
-article.  The central inference is deliberately bounded: an independently
-constructed G9/G10/G11 parent sequence evolves from no accepted upper-brane-capped
+This supplement gives the definitions, acceptance criteria, extended
+numerical results, negative studies, and reproducibility structure underlying
+the article's two linked inferences.  First, an independently constructed
+G9/G10/G11 parent sequence evolves from no accepted upper-brane-capped
 marginally outer trapped surface (MOTS) to two opposite-stability branches,
 and pseudo-arclength continuation resolves their common critical surface.
-An isolated near-critical principal mode accompanies the bracketed zero
-crossing, the endpoint-eliminated discrete adjoint transversality and
-quadratic coefficients are nonzero,
-and the invariant area separation follows a one-half power.  This establishes
-a finite-resolution numerical
-free-boundary MOTS saddle-node in the $SO(3)$-symmetric sector of the
-specified stabilized compact two-brane model.  An independent G10
-half-timestep evolution and continuation strongly constrains the shared temporal-bias
-concern under prospective comparison criteria: the critical-time brackets
-overlap, while the near-critical geometry and normal-form diagnostics agree.
-The saddle-node mechanism
-itself is established theory
-\cite{BoothCoxOkpala2026}; it is not claimed as a new mechanism.
+The principal zero mode, endpoint-eliminated discrete-adjoint coefficients,
+and invariant one-half area law establish a finite-resolution free-boundary
+MOTS saddle-node in the $SO(3)$-symmetric sector.  An independent G10
+half-timestep evolution repeats the complete critical analysis.
 
-The result is numerical and quasi-local.  It is not an event-horizon
+Second, the stable outer branch is followed over a fixed post-fold interval.
+Its leaves form a future-outward spacelike marginal tube with negative inward
+expansion, increasing area, positive principal stability, and orthogonal brane
+contact.  The causal character and geometry transfer across G9/G10/G11 and an
+independent G10 half-timestep evolution.  A reflected, brane-inclusive
+quasi-local charge ledger closes locally and over a finite segment.  This
+supports a finite-resolution free-boundary dynamical-horizon-segment
+interpretation in the selected symmetry sector and foliation
+\cite{AshtekarKrishnan2002,AshtekarKrishnan2003}.
+
+The saddle-node mechanism itself is established theory
+\cite{BoothCoxOkpala2026}; it is not claimed as a new mechanism.  The combined
+result is numerical and quasi-local.  It is not an event-horizon
 reconstruction, a proof excluding every possible initial marginal surface, a
-continuum theorem, or a nonlinear-stability theorem.  It also does not
-determine the nonsymmetric nonprincipal spectrum.  Those exclusions are part of the
-result's scope, not caveats to be silently relaxed.
+continuum theorem, a nonlinear-stability theorem, or a global mass or
+source-ownership ledger.  It also does not determine the nonsymmetric
+nonprincipal spectrum.  Those exclusions are part of the result's scope, not
+caveats to be silently relaxed.
 
 The validation record is organized by scientific risk.  Each principal test
 has four elements: the alternative explanation being tested, a criterion fixed
@@ -609,41 +613,321 @@ separation.
 
 \subsection{Historical principal stability spectrum}
 
-Table~\ref{tab:supp-stability} gives the principal eigenvalues evaluated from
-the complete evolved slice within the $SO(3)$-symmetric physical-normal
-perturbation sector.  No nonsymmetric angular-harmonic spectrum is computed.
-The smallest eigenvalue-to-estimated-error margin is approximately 178.
+The superseded G7/G8 realization also assigned negative principal eigenvalues
+to the inner branch and positive values to the outer branch at every sampled
+time.  Its full 33/49/65/81-node spectra, Fr\'echet-step comparison,
+manufactured control, and numerical values remain in the archive for
+provenance but are not used to close the repaired result.  The load-bearing
+stability evidence is the direct G9/G10/G11 result and half-timestep
+comparison reported above.  Neither realization implies nonlinear basin
+stability.
 
-The operator is formed at 33, 49, 65, and 81 angular nodes using centered
-physical-normal perturbations of relative size $10^{-5}$; the 81-node matrix
-is repeated at $2\times10^{-5}$.  A manufactured flat-slice control with
-isotropic $K^i{}_j=0.8$ has the exact half-sphere radius $R=1.25$ and invariant
-Neumann eigenvalues $\lambda_0=-1.92$ and $\lambda_2=3.20$.  The calculation
-returns $-1.919593$ and $3.200406$, endpoint-elimination defects below
-$10^{-10}$, and a two-step matrix difference of $1.758\times10^{-6}$.
-Every physical 49/65/81 sequence retains one sign; the largest 65/81 change is
-$7.54\times10^{-5}$ and the largest step-induced eigenvalue change is
-$7.35\times10^{-4}$.
+\section{Post-fold marginal-tube construction and controls}
+
+\subsection{Generator, causal character, and area transport}
+
+Let $u^a$ be the future unit normal to a slice and $s^a$ the outward unit
+normal to a marginal leaf.  With
+\begin{equation}
+\ell^a=\frac{u^a+s^a}{\sqrt2},\qquad
+n^a=\frac{u^a-s^a}{\sqrt2},\qquad \ell\mathbin\cdot n=-1,
+\end{equation}
+the normal projection of the positive-time tube generator is
+\begin{equation}
+X^a=\alpha u^a+v_n s^a=A\ell^a-Bn^a,
+\qquad
+A=\frac{\alpha+v_n}{\sqrt2},\quad
+B=\frac{v_n-\alpha}{\sqrt2},
+\label{eq:supp-tube-generator}
+\end{equation}
+so that $X^2=2AB=v_n^2-\alpha^2$.  A future-outward spacelike tube requires
+$A>0$ and $B>0$; a positive norm alone would also admit the opposite
+orientation.  The reconstruction therefore retains the signs of $A$, $B$,
+and $v_n$ as well as the norm.  Backward, centered, and forward velocity paths
+measure the one-sided temporal spread against which the centered norm is
+resolved.  Equation~\eqref{eq:supp-tube-generator} fixes the normalization and
+orientation used in every causal-signature comparison below.
+
+The numerical reconstruction starts from the meridional embedding
+\begin{equation}
+x^A_i(\vartheta)=
+\left(-\rho_i\cos\vartheta,\rho_i\sin\vartheta\right),
+\qquad
+S^A_i=\partial_\vartheta x^A_i,
+\label{eq:supp-embedding}
+\end{equation}
+on leaf $i$.  For physical spacing $\Delta\tau$, the three retained coordinate
+velocities are
+\begin{align}
+\dot x^A_{\rm b}&=\frac{x^A_i-x^A_{i-1}}{\Delta\tau},&
+\dot x^A_{\rm c}&=\frac{x^A_{i+1}-x^A_{i-1}}{2\Delta\tau},&
+\dot x^A_{\rm f}&=\frac{x^A_{i+1}-x^A_i}{\Delta\tau}.
+\label{eq:supp-velocity-paths}
+\end{align}
+The corresponding spacetime vectors are
+$V_p^\mu=(1,\dot x^A_p,0,0)$, $p\in\{{\rm b,c,f}\}$.  Removing the component
+tangent to the leaf gives the invariant normal-plane signature
+\begin{equation}
+\Xi_p=g(V_p,V_p)-\frac{g(V_p,S)^2}{g(S,S)}.
+\label{eq:supp-causal-signature}
+\end{equation}
+With signature $(-,+,+,+,+)$, $\Xi_p>0$ is spacelike.  The centered normal
+speed in Eq.~\eqref{eq:supp-tube-generator} is reconstructed independently as
+$v_n=s_A(\beta^A+\dot x^A_{\rm c})$, where $s_A$ is the unit leaf conormal and
+$\beta^A$ the ADM shift.
+
+At each surface node define
+\begin{equation}
+\delta\Xi=\max\left(
+|\Xi_{\rm b}-\Xi_{\rm c}|,
+|\Xi_{\rm f}-\Xi_{\rm c}|
+\right),
+\qquad
+m_\Xi=\min_\vartheta\left(|\Xi_{\rm c}|-\delta\Xi\right).
+\label{eq:supp-causal-margin}
+\end{equation}
+A node is resolved only if the three signs agree and
+$|\Xi_{\rm c}|>\delta\Xi$.  The full/half comparison uses the pointwise
+normalization
+\begin{equation}
+\epsilon_{\Xi,p}=
+\frac{|\Xi^{\Delta t}_p-\Xi^{\Delta t/2}_p|}
+{\max(|\Xi^{\Delta t}_p|,|\Xi^{\Delta t/2}_p|,10^{-12})},
+\label{eq:supp-causal-temporal-error}
+\end{equation}
+and takes its maximum over all paths, nodes, and matched leaves.
+Equations~\eqref{eq:supp-embedding}, \eqref{eq:supp-velocity-paths},
+\eqref{eq:supp-causal-signature}, \eqref{eq:supp-causal-margin}, and
+\eqref{eq:supp-causal-temporal-error} therefore define the complete
+surface-velocity reconstruction and the two normalizations used for the
+causal classification.
+
+Write the full deformation as $\mathcal X^a=X^a+V^a$, with $V^a$ tangent to
+the leaf.  The first variation of the one-sided area is
+\begin{equation}
+\frac{\dd\mathcal A}{\dd\lambda}
+=\int_{\mathcal S}
+\left(A\theta_{(\ell)}-B\theta_{(n)}\right)\dd A
++\int_{\partial\mathcal S}V\mathbin\cdot\nu\,\dd A_2.
+\label{eq:supp-area-transport}
+\end{equation}
+At orthogonal contact, the leaf conormal $\nu$ is the spatial brane normal.
+Because the endpoint moves within the brane,
+$\mathcal X\mathbin\cdot\nu=0$, while
+$X\mathbin\cdot\nu=0$ by normality to the leaf.  Hence
+$V\mathbin\cdot\nu=0$.  On an exact marginal tube,
+\begin{equation}
+\frac{\dd\mathcal A}{\dd\lambda}
+=-\int_{\mathcal S}B\theta_{(n)}\,\dd A,
+\label{eq:supp-area-law}
+\end{equation}
+so $B>0$ and $\theta_{(n)}<0$ imply strict area increase.  This is the
+free-boundary version of the local dynamical-horizon area law
+\cite{AshtekarKrishnan2002,AshtekarKrishnan2003}.  The endpoint cancellation
+in Eq.~\eqref{eq:supp-area-transport} and the resulting
+Eq.~\eqref{eq:supp-area-law} distinguish the ordinary area transport from the
+separate reflected-curvature seam contribution derived next.
+
+\subsection{Brane-inclusive reflected charge balance}
+
+The ordinary area transport has no separate endpoint term, but the intrinsic
+curvature balance of the reflected leaf does.  Write the one-cap intrinsic
+metric in proper meridional distance as
+$\dd q^2=\dd s^2+W(s)^2\dd\Omega_2^2$, set $c=W_s/W$ at the brane, and let
+$A_2=4\pi W_B^2$.  The Israel condition fixes the signed seam curvature,
+whose distributional contribution on the reflected leaf is
+\begin{equation}
+I_\delta=8cA_2.
+\end{equation}
+Let $H_s$ and $H_\Omega=X\ln W$ be the meridional and spherical principal
+deformation rates at the joint.  Before any balance residual is evaluated, the
+cap variation, direct seam derivative, and differentiated Israel compatibility
+condition are fixed as
+\begin{align}
+D_{\rm cap}
+ &=8A_2\left[-\partial_sH_\Omega+c(H_s-H_\Omega)\right],
+\label{eq:supp-cap-variation}\\
+\dot I_\delta
+ &=8A_2\left(\dot c+2cH_\Omega\right),
+\label{eq:supp-seam-derivative}\\
+\dot c&=\partial_sH_\Omega-cH_s.
+\label{eq:supp-israel-rate}
+\end{align}
+Varying the smooth cap boundary and distribution together therefore combines
+Eqs.~\eqref{eq:supp-cap-variation}, \eqref{eq:supp-seam-derivative}, and
+\eqref{eq:supp-israel-rate} into the coupled identity
+\begin{equation}
+D_{\rm cap}+\dot I_\delta=8A_2cH_\Omega,
+\label{eq:supp-seam-identity}
+\end{equation}
+where $H_\Omega=X\ln W$.  Equation~\eqref{eq:supp-seam-identity} prevents the
+moving joint from being counted independently as curvature, brane matter, and
+normal-connection delta terms.
+
+For the reflected three-leaf define
+\begin{equation}
+\widehat{\mathcal A}=2\mathcal A,\qquad
+R_A=\left(\frac{\widehat{\mathcal A}}{2\pi^2}\right)^{1/3},\qquad
+Q_{\rm AdS}=\frac{R_A}{4}\left[
+\int_{\widehat{\mathcal S}}R_{\widehat{\mathcal S}}\,\dd A
+-\frac{2}{3}\int_{\widehat{\mathcal S}}K_\perp^2\,\dd A
+-\Lambda\widehat{\mathcal A}\right].
+\label{eq:supp-complete-charge}
+\end{equation}
+Equation~\eqref{eq:supp-complete-charge} is the reported $\kappa_5^2E$
+convention, with $\Lambda=-6$ and
+$K_\perp^2=0$ on the exact marginal leaf.  The intrinsic-curvature integral
+includes $I_\delta$; omitting it is a distinct bulk-only comparator, not the
+reported charge.  The coupled seam contribution to the charge rate is
+\begin{equation}
+F_{\rm seam}^{\rm coupled}
+=\frac{R_AI_\delta}{12}
+\frac{\dot{\widehat{\mathcal A}}}{\widehat{\mathcal A}}
++2R_AA_2cH_\Omega.
+\label{eq:supp-seam-flux}
+\end{equation}
+No coefficient in Eq.~\eqref{eq:supp-seam-flux} is selected from the final
+residual.
+
+For completeness, set
+$h=\dot{\widehat{\mathcal A}}/\widehat{\mathcal A}$,
+$C=h+B\theta_{(n)}$, let $\omega$ be the normal-bundle connection along the
+proper meridional coordinate, and define
+\begin{equation}
+\mathcal N[B,\omega]
+=B_{ss}+2\frac{W_s}{W}B_s-2\omega B_s
+-B\left(\omega_s+2\frac{W_s}{W}\omega\right)+B\omega^2.
+\label{eq:supp-normal-bundle-operator}
+\end{equation}
+All smooth integrals below are over the reflected cap with the distributional
+joint removed.  The implemented flux inventory is
+\begin{align}
+F_{R}&=\frac{R_A}{12}\int R_{\widehat{\mathcal S}}C\,\dd A,
+&
+F_{\ell\ell}&=-\frac{R_A}{3}\int
+\theta_{(n)}A\,T_{\ell\ell}\,\dd A,
+\nonumber\\
+F_{\ell n}&=-\frac{R_A}{3}\int
+\theta_{(n)}B\,T_{\ell n}\,\dd A,
+&
+F_{\sigma}&=-\frac{R_A}{3}\int
+\theta_{(n)}A\,\sigma_{(\ell)}^2\,\dd A,
+\nonumber\\
+F_{\omega}&=-\frac{R_A}{3}\int
+\theta_{(n)}\mathcal N[B,\omega],\dd A,
+&
+F_{\rm aniso}&=-\frac{R_A}{2}\int
+\mathring R_{AB}\mathring H^{AB}\,\dd A,
+\nonumber\\
+F_{\Lambda}&=\frac{\Lambda R_A}{3}
+\dot{\widehat{\mathcal A}},
+&
+F_{\rm bg}&=-\frac{\Lambda R_A}{3}
+\dot{\widehat{\mathcal A}},
+\nonumber\\
+F_{\rm tang}&=\frac{R_A}{3}\int
+\theta_{(n)}\mathcal L_X\theta_{(\ell)}\,\dd A.
+\label{eq:supp-ledger-terms}
+\end{align}
+Here $\mathring R_{AB}$ and $\mathring H_{AB}$ are the trace-free intrinsic
+Ricci and deformation tensors.  $T_{\ell\ell}$ and $T_{\ell n}$ are evaluated
+directly from both evolved scalar fields and the stabilizer potential.  The
+normal-bundle operator in Eq.~\eqref{eq:supp-normal-bundle-operator} and the
+terms in Eq.~\eqref{eq:supp-ledger-terms} give the complete rate ledger
+\begin{equation}
+F_{\rm tot}=F_R+F_{\ell\ell}+F_{\ell n}+F_\sigma+F_\omega
++F_{\rm aniso}+F_\Lambda+F_{\rm bg}+F_{\rm tang}
++F_{\rm seam}^{\rm coupled}.
+\label{eq:supp-total-ledger}
+\end{equation}
+Equation~\eqref{eq:supp-total-ledger} replaces rather than supplements the
+older seam bookkeeping.  The two seam entries retained in the machine record are the global-radius and
+joint-work terms displayed separately in Eq.~\eqref{eq:supp-seam-flux}; the
+older curvature, brane-matter, and normal-connection delta entries are
+replaced, not added.  This reflected Hawking--AdS quantity is used only as a
+quasi-local finite-segment diagnostic; it is not identified with a global or
+sector-owned mass.
+
+At each leaf the charge-history derivative and all flux terms are evaluated
+independently.  The local residual normalization is
+\begin{equation}
+\epsilon_{\rm rate}=
+\frac{|\dot Q_{\rm AdS}^{\rm FD}-F_{\rm tot}|}
+{\max\left(|\dot Q_{\rm AdS}^{\rm FD}|,
+\sum_i|F_i|,10^{-12}\right)}.
+\label{eq:supp-rate-residual}
+\end{equation}
+For segment nodes $j=44,45,46,47$, the composite trapezoid is
+\begin{equation}
+I_F=\Delta t\left(\frac12F_{44}+F_{45}+F_{46}+\frac12F_{47}\right),
+\quad
+\epsilon_{\rm seg}=
+\frac{|\Delta Q_{\rm AdS}-I_F|}
+{\max(|\Delta Q_{\rm AdS}|,|I_{\dot Q}|,|I_F|,10^{-12})}.
+\label{eq:supp-integrated-residual}
+\end{equation}
+$I_{\dot Q}$ is the same quadrature applied to the independently differenced
+charge rate.  The local and segment normalizations in
+Eqs.~\eqref{eq:supp-rate-residual} and
+\eqref{eq:supp-integrated-residual} therefore make the reported $0.30182\%$
+a charge--flux comparison, not a term-sum rounding check.
+
+\subsection{Spatial, temporal, and balance results}
+
+The G10 full lane uses $\Delta t/\ell=3.125\times10^{-5}$ and centered leaves
+$39$--$47$; the half-step lane uses $\Delta t/\ell=1.5625\times10^{-5}$ and
+leaves $78,80,\ldots,94$.  These are nine exactly time-aligned samples over
+$0.00121875\leq t/\ell\leq0.00146875$, each reconstructed with guard leaves on
+both sides, so the physical leaf spacing in both comparisons is
+$3.125\times10^{-5}\ell$.  The full/half causal comparison includes all three
+velocity paths and all 501 surface nodes.  The G9/G10/G11 geometry and
+stability transfer uses full-step leaves $43$--$48$; its causal signature uses
+the four centered interior leaves $44$--$47$.  The integrated balance uses
+those same four nodes over
+$0.001375\leq t/\ell\leq0.00146875$ and spatial stencil widths 5, 7, and 9.
+Table~\ref{tab:supp-tube-controls} reports the classification-driving values.
 
 \begin{table}[ht]
 \centering
-\caption{Historical pre-repair principal MOTS-stability eigenvalues; entries
-are G7/G8 and are not used to close the repaired result.}
-\label{tab:supp-stability}
-\begin{tabular}{@{}ccc@{}}
+\caption{Post-fold marginal-tube controls.  All stated ceilings were fixed
+before the corresponding comparison.}
+\label{tab:supp-tube-controls}
+\begin{tabular}{@{}p{0.37\linewidth}p{0.20\linewidth}p{0.31\linewidth}@{}}
 \toprule
-$t$ & inner branch & outer branch \\
+control & criterion & outcome \\
 \midrule
-$0.000625$ & $-0.10391/-0.08791$ & $+0.10879/+0.09127$ \\
-$0.001$    & $-0.29251/-0.28800$ & $+0.33742/+0.33144$ \\
-$0.004$    & $-0.71802/-0.71689$ & $+1.06253/+1.06003$ \\
+G9/G10/G11 geometry transfer & $<1\%$ & maximum $1.24\times10^{-6}$ \\
+G9/G10/G11 principal stability & $<10\%$ or $0.02$ absolute & signs agree; maximum relative difference $4.47\times10^{-5}$ \\
+resolved causal character & all nodes spacelike & 501 of 501 nodes on every tested interior leaf \\
+G10 full/half causal signature & relative difference $<10^{-2}$ & maximum $1.7332\times10^{-8}$ \\
+future trapped signs & $B>0$, $\theta_{(n)}<0$ & both hold on every accepted leaf \\
+area and stability & $\dot{\mathcal A}>0$, $\lambda_0>0$ & strict in both G10 timestep lanes \\
+orthogonal contact & bounded residual & maximum $1.10\times10^{-18}$ \\
+integrated charge--flux balance & relative discrepancy $<1\%$ & maximum $0.30182\%$ \\
+adjacent-grid integrated transfer & relative difference $<1\%$ & maximum $7.575\times10^{-5}$ \\
+within-grid stencil transfer & relative difference $<1\%$ & maximum $3.538\times10^{-5}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The inner branch is therefore outward-unstable and the outer branch
-outward-stable in the linear MOTS sense.  This conclusion does not imply
-nonlinear basin stability.
+Every matched G10 leaf has negative inward expansion; the largest stored value
+is approximately $-2.8587\times10^{-2}$.  The maximum interior marginality
+defect is $1.85\times10^{-6}$.  The full/half causal-signature comparison
+includes all nodes and all three velocity paths.  The integrated balance uses
+a fixed four-node composite trapezoid rule and independently reevaluated
+charges at the four nodes.  On the central width-7 stencil, the charge changes
+on G9/G10/G11 are respectively $0.05084154$, $0.05084091$, and $0.05083977$;
+the integrated total fluxes are $0.05099546$, $0.05099159$, and $0.05099174$.
+The brane-endpoint subtotal is nonzero and supplies approximately $59.44\%$ of
+the integrated total flux on each grid.  This percentage is a local ledger
+decomposition, not an attribution of global mass or source ownership.
+
+The sign, causal, area, stability, spatial-transfer, temporal-transfer, and
+balance tests are logically distinct.  Together they support a
+finite-resolution free-boundary dynamical-horizon segment in the selected
+sector and foliation, rather than only persistent MOTSs on neighboring slices.
+They do not establish an event horizon, future completeness, or global tube
+topology.
 
 \section{Risk--criterion--outcome--consequence matrix}
 
@@ -663,126 +947,55 @@ Risk & Criterion & Outcome & Consequence \\
 \midrule
 \endhead
 Shared temporal-interpolation bias in the critical point & Repeat the complete G10 parent, continuation, and critical analysis at $\Delta t/2$ & The $\sim1.8\times10^{-7}$ brackets overlap; their midpoints differ by $9.17\times10^{-10}$; relative changes in area, $a$, and $b$ are below $10^{-4}$ & Strongly constrains the prescribed temporal concern without treating the midpoint shift as uncertainty; no quarter-step extension is triggered \\
-Systematic temporal-evolution error & Rebuild and evolve the G10 parent at $\Delta t/2$ under the same ordered physical gates & The independent half-step parent passes finite, signature, constraint, wall, axis, endpoint, and replay gates before reproducing the critical observables & Provides an indirect evolution check, not a standalone constraint-convergence study \\
-Insufficient spacetime-field resolution & Repeated G11 trajectories identical; every successive field/tensor discrepancy decreases; tensor ratios below $0.002$ & The repaired-parent field/tensor comparison passes on G9/G10/G11 & Addresses the field/tensor concern for the same repaired line \\
 Unverified direct G11 MOTS observables & Exactly two branches and 1\% adjacent-grid geometry transfer at a common time & At $t=0.0015$ the repaired-parent search admits exactly two opposite-stability branches on G9/G10/G11; maximum geometry transfer $1.76\times10^{-7}$ & Establishes direct three-grid formation geometry and stability on the repaired parent \\
-Spectral condition gate censors the fold & Keep the historical spectral detector distinct from the repaired BVP and augmented corrector & The $10^5$ gate is never applied to the repaired search or continuation; acceptance instead uses BVP residual, endpoint, domain, and cross-evaluator gates & Removes the proposed censoring mechanism; no condition-number trend is claimed because none was archived \\
 Boundary discretization changes the critical mode & Repeat angular resolution, Fr\'echet step, and the physical Robin reduction & The principal sign is stable over 49/65/81 nodes and step doubling; the manufactured free-boundary control passes & Supports the principal mode under the implemented seven-point boundary treatment; no alternative stencil width is claimed \\
 Pair anatomy does not identify a fold & Continue both branches through a principal zero and isolate the near-critical mode & The continuation encloses the zero on all grids; the near-critical mode is sign-definite and the next reduced-sector eigenvalue remains near $5.566$ & Supports a simple critical kernel rather than only a zero-to-two history \\
 Degenerate or tangential critical point & Nonzero, step-stable near-critical discrete-adjoint coefficients with consistent grid transfer & $a\simeq-20.765$ and $b\simeq2.808$ retain sign under step halving and across grids & Resolves temporal transversality and quadratic nondegeneracy under the stated discrete convention \\
-Normalization makes coefficient values ambiguous & State the discrete phase, norm, adjoint, and overlap conventions & $f_R$ has positive-real pivot and unit $\ell_\infty$ norm; the Euclidean left mode is scaled afterward to $f_L^*f_R=1$ & Makes the discrete values reproducible; finite nonzero rescaling cannot alter whether $a$ or $b$ vanishes \\
-Restricted computation misses a nonsymmetric principal instability & Use equivariance together with positivity and uniqueness of the elliptic principal mode & The normalized principal eigenfunction must be $SO(3)$-invariant & Captures the full principal eigenvalue and simple kernel; the nonprincipal nonsymmetric spectrum remains uncomputed \\
 Coordinate branch separation & Invariant area difference follows a one-half power with fit sensitivity & Spatial free fits give $p\simeq0.496$; half-step G10 gives $0.4981$; leave-one-out ranges stay $0.4919$--$0.4996$ & Supplies an invariant saddle-node scaling test without treating fit digits as uncertainty \\
-Three-grid agreement is nonmonotone & Report scatter and withhold a Richardson extrapolation & Relative spreads are $7.87\times10^{-6}$ in $t_*$ and $2.10\times10^{-6}$ in area; no real three-level order is defined & Supports finite-resolution consistency, not a continuum order or theorem \\
+Persistent roots do not form a coherent tube & Resolve the normal generator, its orientation, both expansions, area change, and stability on every accepted leaf & Every tested node is spacelike; $B>0$, $\theta_{(n)}<0$, $\dot{\mathcal A}>0$, and $\lambda_0>0$ persist & Supports a finite-resolution free-boundary dynamical-horizon segment rather than leaf persistence alone \\
+Tube character is a shared temporal artifact & Repeat the matched G10 leaves on an independently evolved half-timestep parent & The maximum pointwise causal-signature difference is $1.7332\times10^{-8}$ against the $10^{-2}$ ceiling & Constrains the causal classification under temporal refinement \\
+The open cap omits or double counts boundary flux & Derive the coupled seam term before evaluation and require a sub-1\% finite-segment charge--flux discrepancy across grids and stencils & The worst discrepancy is $0.30182\%$; adjacent-grid and stencil metrics remain below $7.6\times10^{-5}$ & Supports a brane-inclusive local balance without promoting it to a global mass ledger \\
 \bottomrule
 \end{longtable}
 \normalsize
 
+The complete record also documents evolution gates, discrete eigenvector
+normalization, the equivariance argument for the principal mode, the absence
+of an archived condition-number trend, and the nonmonotone three-grid scatter.
+Those items delimit interpretation but do not add further headline claims.
+
 \section{Historical pre-repair studies}
 
-The studies in this section were performed on the superseded pre-repair G7/G8
-trajectory.  They are preserved as part of the research record but are not
-transferred as controls on the repaired G9/G10/G11 saddle-node.  The direct
-half-timestep and three-grid controls reported above are the load-bearing tests.
-
-Within that historical trajectory, the canonical and independent wall-owner evolution paths each pass the fixed
-$8/16/32$-step temporal sequence.  Two live-gauge variations---a slow/soft and
-a fast/strong variant---reproduce the formation bracket and persistent pair on
-both G7/G8 grids.  These historical studies are not used to assert repaired-line
-gauge robustness or foliation invariance.  The load-bearing G10 critical
-calculation instead passes the complete half-timestep comparison in
-Table~\ref{tab:supp-temporal}.
-
-Historically, pair existence persisted on R8, R10, and R12.  All five R8 amplitudes in
-$A=7.84$--$7.92$ start empty and later contain the pair; R12 anchors at
-$A=7.84$, $7.90$, and $7.92$ preserve late pair existence.  The sample is not
-converted into a derivative, critical amplitude, or open-basin theorem.
-
-The historical adverse-topology program includes opposite-side caps,
-closed-star-shaped candidates, and interval-spanning candidates.  No admitted
-closed-star-shaped or spanning competitor is found in 480 sealed trials.  The
-proper statement is bounded searched-class selection, not a global topology
-theorem.
+The superseded pre-repair G7/G8 trajectory is retained in the archive rather
+than transferred as validation of the repaired G9/G10/G11 result.  It includes
+fixed $8/16/32$-step temporal comparisons, two live-gauge variants, R8/R10/R12
+domain checks, a sparse $A=7.84$--$7.92$ amplitude sample, and 480 sealed
+searches for opposite-side, closed-star-shaped, and interval-spanning
+candidates.  These studies support only their original bounded dispositions:
+they neither establish repaired-line gauge robustness, a critical amplitude,
+an open basin, nor a global topology theorem.  The load-bearing temporal and
+spatial tests are instead those reported in Table~\ref{tab:supp-temporal} and
+the direct three-grid analyses above.
 
 \section{Earlier G11 field closure and pre-formation search}
-
-Before the later formation and continuation calculations, the canonical
-spatial test compared the common-time G10--G11 discrepancy at
-$t=0.001$ with the previously sealed G9--G10 discrepancy.  Two full G11
-trajectories are required to agree bitwise.  Every load-bearing field sequence
-must decrease, no auxiliary RMS plateau may remain, and the relative physical
-metric-increment and ADM-$K$ differences must each be below $2\times10^{-3}$.
-This test acts on evolved spacetime fields and physical tensors.  By itself it
-did not recompute the MOTS observables on G11; that limitation is subsequently
-closed at $t/\ell=0.0015$ by the direct three-grid result above.
-The resulting field and tensor discrepancies are reported in
-Table~\ref{tab:supp-g11}.
-
-\begin{table}[ht]
-\centering
-\caption{Same-time repaired-parent spatial discrepancies.}
-\label{tab:supp-g11}
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Quantity & G9--G10 & G10--G11 & change \\
-\midrule
-$q$ maximum & $6.06393\times10^{-7}$ & $4.06665\times10^{-7}$ & $-32.9\%$ \\
-$q$ RMS & $2.17493\times10^{-8}$ & $1.17272\times10^{-8}$ & $-46.1\%$ \\
-$v$ maximum & $1.21292\times10^{-3}$ & $8.12627\times10^{-4}$ & $-33.0\%$ \\
-$v$ RMS & $4.34884\times10^{-5}$ & $2.34387\times10^{-5}$ & $-46.1\%$ \\
-source maximum & $3.98955\times10^{-11}$ & $2.82353\times10^{-11}$ & $-29.2\%$ \\
-source RMS & $1.67857\times10^{-12}$ & $1.18785\times10^{-12}$ & $-29.2\%$ \\
-metric-increment absolute & $1.45619\times10^{-7}$ & $1.06995\times10^{-7}$ & $-26.5\%$ \\
-ADM-$K$ absolute & $6.18352\times10^{-5}$ & $4.63209\times10^{-5}$ & $-25.1\%$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The G10--G11 relative physical-tensor discrepancies are
-$2.82763\times10^{-4}$ for the metric increment and
-$2.32536\times10^{-4}$ for ADM $K$.  Both lie well below the fixed ceiling.
-The two G11 trajectories and complete traces are bitwise identical; all field
-and tensor sequences satisfy the prescribed closure criteria with no remaining
-auxiliary RMS plateau.
-
-\subsection{Direct surface-observable follow-up}
 \label{sec:repaired-preformation}
 
-The fixed independent BVP detector is applied to the repaired-parent
-G9/G10/G11 endpoints at the same time.  None of the 12 fixed seeds yields an
-admitted branch on any grid.  Table~\ref{tab:preformation-surface} reports the best
-near-surface on each grid.
+Before the direct formation calculation, a common-time repaired-parent test at
+$t/\ell=0.001$ established decreasing G9--G10--G11 discrepancies in every
+load-bearing field and physical-tensor sequence.  The G10--G11 relative
+metric-increment and ADM-$K$ discrepancies are respectively
+$2.82763\times10^{-4}$ and $2.32536\times10^{-4}$, both below the fixed
+$2\times10^{-3}$ ceiling; two complete G11 trajectories agree bitwise.  This
+was field/tensor closure only, and the later direct G9/G10/G11 MOTS calculation
+at $t/\ell=0.0015$ supplies the surface-observable result.
 
-\begin{table}[ht]
-\centering
-\caption{Repaired-parent direct surface search at $t/\ell=0.001$.}
-\label{tab:preformation-surface}
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
-grid & local residual & primary residual & $\rho_{\rm axis}$ & $\rho_{\rm brane}$ \\
-\midrule
-G9  & $0.006015$ & $0.004050$ & $1.20448$ & $1.46931$ \\
-G10 & $0.006139$ & $0.004164$ & $1.20455$ & $1.47113$ \\
-G11 & $0.006092$ & $0.004118$ & $1.20436$ & $1.46632$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The independently evaluated expansion is positive throughout the
-two-cell-interior region of each best profile.  The common magnitude and shape
-across the three grids do not resemble a worsening-resolution instability.
-No comparison with the superseded G7/G8 trajectory is needed for the central
-inference.  The later same-parent continuation establishes that these three profiles lie on
-the pre-formation side: the critical time is near $0.00117254$, after the
-$t/\ell=0.001$ search and before the accepted pair at $t/\ell=0.0015$.
-
-An earlier comparison is retained as a technical negative rather than silently
-discarded.  It compared canonical acceleration against a stored zero step from
-an experimental second wall-owner mode, so it was not a valid canonical
-same-mode spatial comparison.  The archived experimental state differs from
-the canonical state at 1,196 values, with maximum absolute difference
-$3.981706\times10^{-4}$ and RMS $7.7359\times10^{-7}$.  The corrected
-same-mode comparison above supplies the load-bearing spatial result.
+At $t/\ell=0.001$, the fixed independent BVP detector accepts no branch from
+any of 12 seeds on any grid.  The best profiles have independently evaluated
+positive outgoing expansion throughout their two-cell-interior regions.  The
+subsequent same-parent continuation places this search before the critical time
+$t_*/\ell\simeq0.00117254$ and the accepted pair at $t/\ell=0.0015$.
+An earlier cross-mode acceleration comparison remains archived as an invalid
+same-mode spatial test; it is not used in the inference.
 
 \section{Negative, failed, and incomplete studies}
 
@@ -795,8 +1008,8 @@ nonacceptance.
 \item Formation times from the historical pre-repair larger-domain parents are
 not transferred to the repaired line or used to infer a universal formation
 threshold.
-\item Long-time and transport-oriented diagnostics do not qualify a late-time
-production claim.  The article ends with the short-time paired-MOTS result.
+\item The controlled post-fold interval supports a finite marginal-tube
+segment, not late-time settling, future completeness, or production evolution.
 \item Width and boundary variants that do not satisfy their own prerequisite
 or identity gates are not counted as adverse scientific outcomes.
 \item Arithmetic-precision and parent-qualification studies that preceded the
@@ -833,19 +1046,34 @@ hashes
 \nolinkurl{16eea6a208b7db8be4a3cd090778e98b18f905f00ca32cba9d534e4cd25ea522},\\
 \nolinkurl{98e53d892e4732398dea40b623517b43359f4e7b7f1d735286bd388797bbd999}.
 \end{quote}
+The post-fold spatial-transfer, local-balance, integrated-balance, and
+half-timestep causal-signature records are stored as \texttt{Protocols
+247--250}.  Their result JSON SHA-256 hashes are, respectively,
+\begin{quote}
+\nolinkurl{515e365bd7d8f1b1caeb7356724c0d3ca129364556de64898cf563cd8b122642},\\
+\nolinkurl{66c938d71c7ad2a135d9f03dec48d1ebffcec6cd479ad031e48b2cd4a55f57a9},\\
+\nolinkurl{6d54755023ce09beaa992e57a1eef1c1d2fcd3f42db0e662d08c25bd557e9317},\\
+\nolinkurl{6866d08889beb5107436c3975b7d69ff7f48a80d244ff185ea954292ede400b3}.
+\end{quote}
+These records preserve the separately evolved parents, the fixed leaf and
+segment selections, all three velocity paths and spatial stencils, the
+brane-inclusive ledger, recovery replays, and the explicit nonauthorization
+of event-horizon, topology, source-ownership, and continuum claims.
 The archival package binds source manifests, immutable inputs, environment
 receipts, prospective gate definitions, checkpoints, repeat traces, and final
 artifacts.  The article and this supplement report scientific outcomes; the
-archive provides machine-level replay evidence.  The complete citable package
-is archived in the published Zenodo version identified by
-\href{https://doi.org/10.5281/zenodo.22087164}{doi:10.5281/zenodo.22087164}.
+archive provides machine-level replay evidence.  Machine-readable result
+records and frozen protocol manifests are archived in the Zenodo version
+identified by
+\href{https://doi.org/10.5281/zenodo.22148554}{doi:10.5281/zenodo.22148554}.
 The complete version series is identified by the concept DOI
 \href{https://doi.org/10.5281/zenodo.22085054}{doi:10.5281/zenodo.22085054}.
-The version-controlled Python source, frozen protocol implementations, and
-test suite are publicly available in the
-\href{https://github.com/RonBibb/free-boundary-mots-saddle-node}{GitHub repository}.
-The Zenodo record remains the citable archival authority for the scientific
-results.
+The version-controlled source code, tests, frozen protocol implementations,
+and figure-generation scripts are publicly available through the
+\href{https://github.com/RonBibb/free-boundary-mots-saddle-node}{GitHub repository}
+linked from that Zenodo record.  Zenodo is the citable authority for the
+saddle-node and marginal-tube result records; GitHub is the public code
+repository.
 
 \section{Boundary of inference}
 
@@ -859,13 +1087,17 @@ perturbation sector;
 \item an event horizon, common horizon, throat, parent/child universe, or
 topology change;
 \item a universal formation time or critical-amplitude law; or
-\item late-time production evolution.
+\item future-complete or late-time production evolution beyond the tested
+marginal-tube segment.
 \end{itemize}
 These questions require separate, prospectively defined studies.  In
 particular, global event-horizon reconstruction would constitute a distinct
-paper rather than an appendix to the present quasi-local claim.
+paper rather than an appendix to the present quasi-local claim.  The reflected
+quasi-local balance likewise does not assign mass to the visible, bulk, brane,
+or adjacent sector.
 
 \begingroup
+\small
 \small
 \bibliographystyle{unsrt}
 \bibliography{references}

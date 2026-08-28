@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or its archived records, please cite the associated paper and Zenodo record."
-title: "Normal-Form Resolution of a Free-Boundary MOTS Saddle-Node in Dynamical Five-Dimensional Gravity"
+title: "From a Free-Boundary MOTS Saddle-Node to a Spacelike Marginal Tube in Dynamical Five-Dimensional Gravity"
 type: software
 authors:
   - family-names: Bibb
@@ -8,6 +8,6 @@ authors:
     affiliation: "Independent Researcher"
 version: 1.0.0
 date-released: 2026-08-24
-doi: 10.5281/zenodo.22087164
+doi: 10.5281/zenodo.22148554
 repository-code: "https://github.com/RonBibb/free-boundary-mots-saddle-node"
-url: "https://doi.org/10.5281/zenodo.22087164"
+url: "https://doi.org/10.5281/zenodo.22148554"
